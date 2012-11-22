@@ -1,5 +1,4 @@
 \documentclass[a4paper,papersize]{jsbook}
-
 %\renewcommand{\rmdefault}{ptm} % Times Font
 \usepackage{newcent} % New Century Schoolbook
 
@@ -8,13 +7,12 @@
 
 \newcounter{marginpar}% 新しいカウンタ
 \makeatletter
-  \let\org@marginpar\marginpar% オリジナルを退避
-%%
-\renewcommand{\marginpar}[1]{%
-  \refstepcounter{marginpar}%  カウンタを一つ増やす
-  \kern0pt$^{*\themarginpar}$% 本文での傍注番号
-  \org@marginpar{\footnotesize*\themarginpar~#1}% 傍注
-}%
+  \let\org@marginpar\marginpar% オリジナルの命令を退避する
+  \renewcommand{\marginpar}[1]{%
+    \refstepcounter{marginpar}%  カウンタを一つ増やす
+    \kern0pt$^{*\themarginpar}$% 本文での傍注番号を出力する
+    \org@marginpar{\footnotesize*\themarginpar~#1}% オリジナルの命令を呼び出して番号付き傍注を出力する
+  }%
 \makeatother
 
 \begin{document}
