@@ -1,23 +1,14 @@
-\documentclass[a4paper,12Q,papersize]{jsbook}
+\documentclass[a4j]{jsbook}
 %\renewcommand{\rmdefault}{ptm} % Times Font
-\usepackage{newcent} % New Century Schoolbook
+%\usepackage{newcent} % New Century Schoolbook
+\usepackage{document} % 自作書式集
 
 \title{オブジェクト指向フレームワーク原論}
 \author{中鉢 欣秀}
 
-\newcounter{marginpar}% 新しいカウンタ
-\makeatletter
-  \let\org@marginpar\marginpar% オリジナルの命令を退避する
-  \renewcommand{\marginpar}[1]{%
-    \refstepcounter{marginpar}%  カウンタを一つ増やす
-    \kern0pt$^{*\themarginpar}$% 本文での傍注番号を出力する
-    \org@marginpar{\footnotesize*\themarginpar~#1}% オリジナルの命令を呼び出して番号付き傍注を出力する
-  }%
-\makeatother
-
 \begin{document}
 \maketitle
-\tableofcontents
+% \tableofcontents
 
 \chapter{序}
 \begin{abstract}

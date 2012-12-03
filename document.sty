@@ -1,0 +1,7 @@
+\newcounter{marginpar}% 新しいカウンタ
+  \let\org@marginpar\marginpar% オリジナルの命令を退避する
+  \renewcommand{\marginpar}[1]{%
+    \refstepcounter{marginpar}%  カウンタを一つ増やす
+    \kern0pt$^{*\themarginpar}$% 本文での傍注番号を出力する
+    \org@marginpar{\footnotesize*\themarginpar~#1}% オリジナルの命令を呼び出して番号付き傍注を出力する
+  }%
