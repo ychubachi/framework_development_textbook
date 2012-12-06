@@ -1,20 +1,19 @@
 \documentclass[a4j,papersize]{jsbook}
-%\renewcommand{\rmdefault}{ptm} % Times Font
-%\usepackage{newcent} % New Century Schoolbook
+
+\usepackage[T1]{fontenc} % LaTeXのフォントのエンコーディングをT1にする
+\usepackage{textcomp} % TS1
+\usepackage[utf8]{inputenc} % ファイルのエンコーディングをUTF8にする
+\usepackage{lmodern}
+
 \usepackage{document} % 自作書式集
 
-\usepackage{fancyvrb}
-\usepackage{color}
-
-\title{オブジェクト指向フレームワーク原論}
+%\title{オブジェクト指向フレームワーク原論}
+\title{Javaによる抽象化プログラミング技法}
 \author{中鉢 欣秀}
 
 \begin{document}
 \maketitle
 % \tableofcontents
-
-%% pygmentizeの実行はこんな感じ
-% pygmentize -f latex -O encoding=utf-8,linenos=True -F whitespace:tabs=True,tabsize=4 Square/src/Square.java
 
 \chapter{序}
 \begin{abstract}
@@ -22,30 +21,21 @@
 \end{abstract}
 \section{オブジェクト指向型フレームワーク開発}
 
+この教科書はオブジェクト指向の初心者が最短でオブジェクト指向の抽象化機
+構を最短で理解できることを目指します．
+
+javaの約束事や決まりごとは「おまじない」または「お約束」と説明するのが
+慣例です．
+このテキストでは，明確にそれらの解説への参照箇所を示します．
+
 \begin{figure}
-\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1,
-	frame=single,fontsize=\small]
-\PY{k+kn}{import} \PY{n+nn}{java.io.BufferedReader}\PY{o}{;}
-\PY{k+kn}{import} \PY{n+nn}{java.io.InputStreamReader}\PY{o}{;}
-
-\PY{k+kd}{public} \PY{k+kd}{class} \PY{n+nc}{Square} \PY{o}{\PYZob{}}
-	\PY{k+kd}{public} \PY{k+kd}{static} \PY{k+kt}{void} \PY{n+nf}{main}\PY{o}{(}\PY{n}{String}\PY{o}{[}\PY{o}{]} \PY{n}{args}\PY{o}{)} \PY{k+kd}{throws} \PY{n}{Exception} \PY{o}{\PYZob{}}
-		\PY{n}{Square} \PY{n}{square} \PY{o}{=} \PY{k}{new} \PY{n}{Square}\PY{o}{(}\PY{o}{)}\PY{o}{;}
-		\PY{n}{square}\PY{o}{.}\PY{n+na}{run}\PY{o}{(}\PY{o}{)}\PY{o}{;}
-	\PY{o}{\PYZcb{}}
-
-	\PY{k+kd}{private} \PY{k+kt}{void} \PY{n+nf}{run}\PY{o}{(}\PY{o}{)} \PY{k+kd}{throws} \PY{n}{Exception} \PY{o}{\PYZob{}}
-		\PY{n}{System}\PY{o}{.}\PY{n+na}{out}\PY{o}{.}\PY{n+na}{print}\PY{o}{(}\PY{l+s}{"自乗を計算する値を入力してください："}\PY{o}{)}\PY{o}{;}
-		\PY{n}{BufferedReader} \PY{n}{reader} \PY{o}{=}
-			\PY{k}{new} \PY{n+nf}{BufferedReader}\PY{o}{(}
-				\PY{k}{new} \PY{n+nf}{InputStreamReader}\PY{o}{(}\PY{n}{System}\PY{o}{.}\PY{n+na}{in}\PY{o}{)}\PY{o}{)}\PY{o}{;}
-		\PY{n}{String} \PY{n}{valueString} \PY{o}{=} \PY{n}{reader}\PY{o}{.}\PY{n+na}{readLine}\PY{o}{(}\PY{o}{)}\PY{o}{;}
-		\PY{k+kt}{double} \PY{n}{value} \PY{o}{=} \PY{n}{Double}\PY{o}{.}\PY{n+na}{parseDouble}\PY{o}{(}\PY{n}{valueString}\PY{o}{)}\PY{o}{;}
-		\PY{n}{System}\PY{o}{.}\PY{n+na}{out}\PY{o}{.}\PY{n+na}{println}\PY{o}{(}\PY{l+s}{"計算結果："} \PY{o}{+} \PY{o}{(}\PY{n}{value} \PY{o}{*} \PY{n}{value}\PY{o}{)}\PY{o}{)}\PY{o}{;}
-	\PY{o}{\PYZcb{}}
-\PY{o}{\PYZcb{}}
-\end{Verbatim}
+\input{source_code/workspace/Square/src/Square.java.tex}
 \caption{自乗を計算するプログラム} 
+\end{figure}
+
+\begin{figure}
+\input{source_code/workspace/Division/src/Division.java.tex}
+\caption{割り算をするプログラム} 
 \end{figure}
 
 寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助
@@ -54,28 +44,14 @@
 寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
 
 寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
+寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポン
 
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
+\section{パッケージとクラスの可視性}
+パッケージは名前空間です．
 
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に
-住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイ
-のポンポコピーのポンポコナーのああああ．
+\section{メモ}
+\begin{enumerate}
+ \item 名前付けと抽象化について（int x = 1; double pi = 3.14）
+\end{enumerate}
 
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
-
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
-
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
-
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
-
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
 \end{document}

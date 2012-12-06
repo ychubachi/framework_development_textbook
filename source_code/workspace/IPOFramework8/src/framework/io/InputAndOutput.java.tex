@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1,frame=single,fontsize=\small]
+\PY{k+kn}{package}\PY{+w}{ }\PY{n}{framework}\PY{o}{.}\PY{n+na}{io}\PY{o}{;}
+
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{java.io.IOException}\PY{o}{;}
+
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{framework.process.Input}\PY{o}{;}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{framework.process.Output}\PY{o}{;}
+
+
+\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{interface}\PY{+w}{ }\PY{n+nc}{InputAndOutput}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{n}{Input}\PY{+w}{ }\PY{n+nf}{input}\PY{o}{(}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{IOException}\PY{o}{;}
+\PY{+w}{    }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{output}\PY{o}{(}\PY{n}{Output}\PY{+w}{ }\PY{n}{output}\PY{o}{)}\PY{o}{;}
+\PY{o}{\PYZcb{}}
+\end{Verbatim}

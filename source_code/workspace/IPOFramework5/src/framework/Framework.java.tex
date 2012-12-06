@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1,frame=single,fontsize=\small]
+\PY{k+kn}{package}\PY{+w}{ }\PY{n}{framework}\PY{o}{;}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{java.io.IOException}\PY{o}{;}
+
+
+\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{abstract}\PY{+w}{ }\PY{k+kd}{class}\PY{+w}{ }\PY{n+nc}{Framework}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{static}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{main}\PY{o}{(}\PY{n}{String}\PY{o}{[}\PY{o}{]}\PY{+w}{ }\PY{n}{args}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{Exception}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{Class}\PY{o}{\PYZlt{}}\PY{o}{?}\PY{o}{\PYZgt{}}\PY{+w}{ }\PY{n}{c}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{Class}\PY{o}{.}\PY{n+na}{forName}\PY{o}{(}\PY{n}{args}\PY{o}{[}\PY{l+m+mi}{0}\PY{o}{]}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{Framework}\PY{+w}{ }\PY{n}{framework}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{o}{(}\PY{n}{Framework}\PY{o}{)}\PY{+w}{ }\PY{n}{c}\PY{o}{.}\PY{n+na}{newInstance}\PY{o}{(}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{framework}\PY{o}{.}\PY{n+na}{run}\PY{o}{(}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{o}{\PYZcb{}}
+
+\PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{run}\PY{o}{(}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{Exception}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{Input}\PY{+w}{ }\PY{n}{input}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{input}\PY{o}{(}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{Output}\PY{+w}{ }\PY{n}{output}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{process}\PY{o}{(}\PY{n}{input}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{output}\PY{o}{(}\PY{n}{output}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{o}{\PYZcb{}}
+
+\PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{abstract}\PY{+w}{ }\PY{n}{Input}\PY{+w}{ }\PY{n+nf}{input}\PY{o}{(}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{IOException}\PY{o}{;}
+\PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{abstract}\PY{+w}{ }\PY{n}{Output}\PY{+w}{ }\PY{n+nf}{process}\PY{o}{(}\PY{n}{Input}\PY{+w}{ }\PY{n}{input}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{abstract}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{output}\PY{o}{(}\PY{n}{Output}\PY{+w}{ }\PY{n}{output}\PY{o}{)}\PY{o}{;}
+\PY{o}{\PYZcb{}}
+\end{Verbatim}

@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1,frame=single,fontsize=\small]
+\PY{k+kn}{package}\PY{+w}{ }\PY{n}{square}\PY{o}{.}\PY{n+na}{process}\PY{o}{;}
+
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{framework.process.Input}\PY{o}{;}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{framework.process.Output}\PY{o}{;}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{framework.process.Process}\PY{o}{;}
+
+\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{class}\PY{+w}{ }\PY{n+nc}{SquareProcess}\PY{+w}{ }\PY{k+kd}{implements}\PY{+w}{ }\PY{n}{Process}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{c+c1}{//}\PY{+w}{ }\PY{c+c1}{自乗を計算する}
+\PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{process}\PY{o}{(}\PY{n}{Input}\PY{+w}{ }\PY{n}{input}\PY{o}{,}\PY{+w}{ }\PY{n}{Output}\PY{+w}{ }\PY{n}{output}\PY{o}{)}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{ValueToBeSquared}\PY{+w}{ }\PY{n}{vtbs}\PY{+w}{ }\PY{o}{=}\PY{o}{(}\PY{n}{ValueToBeSquared}\PY{o}{)}\PY{+w}{ }\PY{n}{input}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{SquaredValue}\PY{+w}{ }\PY{n}{sv}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{o}{(}\PY{n}{SquaredValue}\PY{o}{)}\PY{+w}{ }\PY{n}{output}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{sv}\PY{o}{.}\PY{n+na}{result}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{vtbs}\PY{o}{.}\PY{n+na}{value}\PY{+w}{ }\PY{o}{*}\PY{+w}{ }\PY{n}{vtbs}\PY{o}{.}\PY{n+na}{value}\PY{o}{;}
+\PY{+w}{    }\PY{o}{\PYZcb{}}
+\PY{o}{\PYZcb{}}
+\end{Verbatim}

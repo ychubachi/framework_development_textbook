@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1,frame=single,fontsize=\small]
+\PY{k+kn}{package}\PY{+w}{ }\PY{n}{division}\PY{o}{;}
+
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{framework.Input}\PY{o}{;}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{framework.Output}\PY{o}{;}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{framework.Process}\PY{o}{;}
+
+
+\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{class}\PY{+w}{ }\PY{n+nc}{DivisionProcess}\PY{+w}{ }\PY{k+kd}{implements}\PY{+w}{ }\PY{n}{Process}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{c+c1}{//}\PY{+w}{ }\PY{c+c1}{商と余を計算する}
+\PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{n}{Output}\PY{+w}{ }\PY{n+nf}{process}\PY{o}{(}\PY{n}{Input}\PY{+w}{ }\PY{n}{input}\PY{o}{)}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{DividendAndDivisor}\PY{+w}{ }\PY{n}{dad}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{o}{(}\PY{n}{DividendAndDivisor}\PY{o}{)}\PY{+w}{ }\PY{n}{input}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{QuotientAndRemainder}\PY{+w}{ }\PY{n}{output}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{k}{new}\PY{+w}{ }\PY{n}{QuotientAndRemainder}\PY{o}{(}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{output}\PY{o}{.}\PY{n+na}{quotient}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{dad}\PY{o}{.}\PY{n+na}{dividend}\PY{+w}{ }\PY{o}{/}\PY{+w}{ }\PY{n}{dad}\PY{o}{.}\PY{n+na}{divisor}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{output}\PY{o}{.}\PY{n+na}{remainder}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{dad}\PY{o}{.}\PY{n+na}{dividend}\PY{+w}{ }\PY{o}{\PYZpc{}}\PY{+w}{ }\PY{n}{dad}\PY{o}{.}\PY{n+na}{divisor}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{k}{return}\PY{+w}{ }\PY{n}{output}\PY{o}{;}
+\PY{+w}{    }\PY{o}{\PYZcb{}}
+\PY{o}{\PYZcb{}}
+\end{Verbatim}

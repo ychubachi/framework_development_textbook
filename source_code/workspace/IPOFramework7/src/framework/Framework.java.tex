@@ -1,0 +1,30 @@
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1,frame=single,fontsize=\small]
+\PY{k+kn}{package}\PY{+w}{ }\PY{n}{framework}\PY{o}{;}
+
+
+\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{class}\PY{+w}{ }\PY{n+nc}{Framework}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{k+kd}{private}\PY{+w}{ }\PY{n}{InputAndOutput}\PY{+w}{ }\PY{n}{io}\PY{o}{;}
+\PY{+w}{    }\PY{k+kd}{private}\PY{+w}{ }\PY{n}{Process}\PY{+w}{ }\PY{n}{process}\PY{o}{;}
+\PY{+w}{    }
+\PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{n+nf}{Framework}\PY{o}{(}\PY{n}{String}\PY{+w}{ }\PY{n}{ioClass}\PY{o}{,}\PY{+w}{ }\PY{n}{String}\PY{+w}{ }\PY{n}{processClass}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{ClassNotFoundException}\PY{o}{,}\PY{+w}{ }\PY{n}{InstantiationException}\PY{o}{,}\PY{+w}{ }\PY{n}{IllegalAccessException}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{Class}\PY{o}{\PYZlt{}}\PY{o}{?}\PY{o}{\PYZgt{}}\PY{+w}{ }\PY{n}{io}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{Class}\PY{o}{.}\PY{n+na}{forName}\PY{o}{(}\PY{n}{ioClass}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{k}{this}\PY{o}{.}\PY{n+na}{io}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{o}{(}\PY{n}{InputAndOutput}\PY{o}{)}\PY{+w}{ }\PY{n}{io}\PY{o}{.}\PY{n+na}{newInstance}\PY{o}{(}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{Class}\PY{o}{\PYZlt{}}\PY{o}{?}\PY{o}{\PYZgt{}}\PY{+w}{ }\PY{n}{process}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{Class}\PY{o}{.}\PY{n+na}{forName}\PY{o}{(}\PY{n}{processClass}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{k}{this}\PY{o}{.}\PY{n+na}{process}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{o}{(}\PY{n}{Process}\PY{o}{)}\PY{+w}{ }\PY{n}{process}\PY{o}{.}\PY{n+na}{newInstance}\PY{o}{(}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{o}{\PYZcb{}}
+
+\PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{static}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{main}\PY{o}{(}\PY{n}{String}\PY{o}{[}\PY{o}{]}\PY{+w}{ }\PY{n}{args}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{Exception}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{String}\PY{+w}{ }\PY{n}{ioClass}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{args}\PY{o}{[}\PY{l+m+mi}{0}\PY{o}{]}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{String}\PY{+w}{ }\PY{n}{processClass}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{args}\PY{o}{[}\PY{l+m+mi}{1}\PY{o}{]}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }
+\PY{+w}{    }\PY{+w}{    }\PY{n}{Framework}\PY{+w}{ }\PY{n}{framework}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{k}{new}\PY{+w}{ }\PY{n}{Framework}\PY{o}{(}\PY{n}{ioClass}\PY{o}{,}\PY{+w}{ }\PY{n}{processClass}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{framework}\PY{o}{.}\PY{n+na}{run}\PY{o}{(}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{o}{\PYZcb{}}
+
+\PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{run}\PY{o}{(}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{Exception}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{Input}\PY{+w}{ }\PY{n}{input}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{io}\PY{o}{.}\PY{n+na}{input}\PY{o}{(}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{Output}\PY{+w}{ }\PY{n}{output}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{process}\PY{o}{.}\PY{n+na}{process}\PY{o}{(}\PY{n}{input}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{io}\PY{o}{.}\PY{n+na}{output}\PY{o}{(}\PY{n}{output}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{o}{\PYZcb{}}
+\PY{o}{\PYZcb{}}
+\end{Verbatim}
