@@ -1,3 +1,12 @@
+%% 演習環境
+\newcounter{演習番号}[chapter] % 章のカウンタの子供カウンタの宣言
+\setcounter{演習番号}{0} % カウンタの初期化
+\newenvironment{演習}
+  {\refstepcounter{演習番号}
+    \vspace{0.5\baselineskip}
+    \noindent\textbf{\large 演習{\thechapter}.{\the演習番号}}\par}
+  {\vspace{0.5\baselineskip}}
+
 \newcounter{marginpar}% 新しいカウンタ
   \let\org@marginpar\marginpar% オリジナルの命令を退避する
   \renewcommand{\marginpar}[1]{%
