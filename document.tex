@@ -1,10 +1,4 @@
 \documentclass[a4j,papersize]{jsbook}
-
-\usepackage[T1]{fontenc} % LaTeXのフォントのエンコーディングをT1にする
-\usepackage{textcomp} % TS1
-\usepackage[utf8]{inputenc} % ファイルのエンコーディングをUTF8にする
-\usepackage{lmodern}
-
 \usepackage{document} % 自作書式集
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -96,5 +90,8 @@ MVCフレームワーク
  \item テストを取り上げるか？
  \item パターンとアーキテクチャについて解説する？
 \end{enumerate}
+
+%trim option's parameter order: left bottom right top
+\includegraphics[width=\textwidth, trim=30mm 30mm 35mm 35mm,clip]{framework.pdf}
 
 \end{document}
