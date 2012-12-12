@@ -150,49 +150,41 @@ MVCフレームワーク
 \end{abstract}
 
 \section{自乗を計算するプログラム}
-\begin{figure}
-\input{source_code/workspace/Square1/src/square/Square.java.tex}
-\caption{自乗を計算するプログラム}\label{code:Square1:square:Square}
-\end{figure}
 
-図\ref{code:Square1:square:Square}は，Squareという名前のクラスを定義する
-コードです．
+次のコードは，Divisionという名前のクラスを定義します．
 
-1行目はパッケージ宣言です（正式は？）\marginpar{パッケージについて
-は・・・を参照．}．
+実際に実行すると，このコードは割り算をして商と余を計算して表示します．
+
+\input{source_code/workspace/Division1/src/division/Division.java.tex}
+
+1行目はsquareというパッケージ宣言です（正式は？）\marginpar{パッケージ
+については・・・を参照．}．
 
 それでは，次の例題を考えてみましょう．
 
 \begin{例題}
- 図\ref{code:Square1:square:Square}の\texttt{run()}メソッド内のコー
- ドを入力・処理・出力のパターンで分類せよ．
+ Divisionクラスの\texttt{run()}メソッド内のコードを入力・処理・出力のパ
+ ターンで分類せよ．
 \end{例題}
 
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助
-\marginpar{寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．}
-．
+答えは次のとおりです．
+
+\input{source_code/workspace/Division2/src/division/Division.java.tex}
 
 \section{演習問題}
+
+\begin{演習}
+ コメントブロックを用いて，このプログラムを入力・処理・出力に整理しなさ
+ い．
+ \input{source_code/workspace/Square1/src/square/Square.java.tex}
+\end{演習}
 
 \begin{演習}
  Java言語ではクラスの名前とファイル名を一致させる必要がある．他のオブジェ
  クト指向型言語の場合を調べよ．また，クラス名とファイル名を一致させるこ
  との長所・短所について考察せよ．
 \end{演習}
-
-\begin{演習}
- 図\ref{code:Square1:square:Square}の・・・を・・・せよ．
-\end{演習}
-
-\begin{演習}
- 図？は割り算をして商とあまりを計算するプログラムです．
- コメントブロックを用いて，このプログラムを入力・処理・出力に整理しなさい
- \end{演習}
  
-\begin{figure}
-\input{source_code/workspace/Division/src/Division.java.tex}
-\caption{割り算をするプログラム} 
-\end{figure}
 
 \section{パッケージとクラスの可視性}
 パッケージは名前空間です．
