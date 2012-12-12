@@ -1,3 +1,11 @@
+\usepackage[T1]{fontenc} % LaTeXのフォントのエンコーディングをT1にする
+\usepackage{textcomp} % TS1
+\usepackage[utf8]{inputenc} % ファイルのエンコーディングをUTF8にする
+\usepackage{lmodern}
+
+\usepackage[dvipdfmx]{graphicx}
+\graphicspath{{./figures/}}
+
 %% 例題環境
 \newcounter{例題番号}[chapter] % 章のカウンタの子供カウンタの宣言
 \setcounter{例題番号}{0} % カウンタの初期化
