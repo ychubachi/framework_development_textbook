@@ -7,9 +7,9 @@
 \PY{+w}{    }\PY{k+kd}{private}\PY{+w}{ }\PY{n}{Process}\PY{+w}{ }\PY{n}{process}\PY{o}{;}
 \PY{+w}{    }
 \PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{n+nf}{Framework}\PY{o}{(}\PY{n}{String}\PY{+w}{ }\PY{n}{ioClass}\PY{o}{,}\PY{+w}{ }\PY{n}{String}\PY{+w}{ }\PY{n}{processClass}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{ClassNotFoundException}\PY{o}{,}\PY{+w}{ }\PY{n}{InstantiationException}\PY{o}{,}\PY{+w}{ }\PY{n}{IllegalAccessException}\PY{+w}{ }\PY{o}{\PYZob{}}
-\PY{+w}{    }\PY{+w}{    }\PY{n}{Class}\PY{o}{\PYZlt{}}\PY{o}{?}\PY{o}{\PYZgt{}}\PY{+w}{ }\PY{n}{io}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{Class}\PY{o}{.}\PY{n+na}{forName}\PY{o}{(}\PY{n}{ioClass}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{Class}\PY{o}{<}\PY{o}{?}\PY{o}{>}\PY{+w}{ }\PY{n}{io}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{Class}\PY{o}{.}\PY{n+na}{forName}\PY{o}{(}\PY{n}{ioClass}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{+w}{    }\PY{k}{this}\PY{o}{.}\PY{n+na}{io}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{o}{(}\PY{n}{InputAndOutput}\PY{o}{)}\PY{+w}{ }\PY{n}{io}\PY{o}{.}\PY{n+na}{newInstance}\PY{o}{(}\PY{o}{)}\PY{o}{;}
-\PY{+w}{    }\PY{+w}{    }\PY{n}{Class}\PY{o}{\PYZlt{}}\PY{o}{?}\PY{o}{\PYZgt{}}\PY{+w}{ }\PY{n}{process}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{Class}\PY{o}{.}\PY{n+na}{forName}\PY{o}{(}\PY{n}{processClass}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{Class}\PY{o}{<}\PY{o}{?}\PY{o}{>}\PY{+w}{ }\PY{n}{process}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{Class}\PY{o}{.}\PY{n+na}{forName}\PY{o}{(}\PY{n}{processClass}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{+w}{    }\PY{k}{this}\PY{o}{.}\PY{n+na}{process}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{o}{(}\PY{n}{Process}\PY{o}{)}\PY{+w}{ }\PY{n}{process}\PY{o}{.}\PY{n+na}{newInstance}\PY{o}{(}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{o}{\PYZcb{}}
 
