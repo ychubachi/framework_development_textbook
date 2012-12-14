@@ -5,15 +5,26 @@
 \usepackage[utf8]{inputenc} % ファイルのエンコーディングをUTF8にする
 \usepackage{lmodern}
 
-\usepackage{url}
+%\usepackage{url}
 
 \usepackage{document} % 自作書式集
+
+\usepackage[dvipdfmx,%
+ bookmarks=true,%
+ bookmarksnumbered=true,%
+ colorlinks=true,%
+ setpagesize=false,%
+ pdftitle={Javaによる抽象化プログラミング技法},%
+ pdfauthor={中鉢欣秀},%
+ pdfsubject={教科書},%
+ pdfkeywords={Java; Object-Oriented Programing; Framework;}]{hyperref}
+\usepackage{pxjahyper}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 本文
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\title{オブジェクト指向フレームワーク原論}
+%\title{オブジェクト指向フレームワーク原論}d
 \title{Javaによる抽象化プログラミング技法}
 \author{中鉢 欣秀}
 \begin{document}
@@ -23,13 +34,15 @@
 \chapter*{序}
 
 \begin{abstract}
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
+寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に
+住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイ
+のポンポコピーのポンポコナーの長久命の長助．
 \end{abstract}
 
 \section*{はじめに}
 
-この教科書はオブジェクト指向の初心者が最短でオブジェクト指向の抽象化機
-構を最短で理解できることを目指します．
+この教科書はオブジェクト指向言語の抽象化機構を最短で理解できることを目
+指したものである．
 
 ソフトウェアに関連する技術の移り変わりはとても早い．変わらない知識（普遍的な知識）を身につけることこそ，ソフトウェアのアーキテクトに求められることです．
 
