@@ -150,10 +150,118 @@ MVCフレームワーク
 は，フレームワークを呼び出すのではなく，フレー
 ムワークに呼び出されるのを待つ 
 
-% スライドp19まで
+\section{フレームワークに関係する用語}
 
-%trim option's parameter order: left bottom right top
-\includegraphics[width=0.8\textwidth, trim=30mm 30mm 35mm 35mm,clip]{framework.pdf}
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=30mm 30mm 35mm
+  35mm,clip]{framework.pdf}
+  \caption{フレームワークのアーキテクチャ例}
+ \end{center}
+\end{figure}
+
+\begin{description}
+ \item[コンポーネント(component)] 1つまたはそれ以上のクラスからなる,特
+	    定の目的を達成するソフトウェア部品．
+ \item[フレームワーク・コンポーネント(framework component)] 再利用性の
+	    あるロジックをコンポーネントにしたもので,後述のプラグイン
+	    コンポーネントと併用することで,様々なアプリケーションに利
+	    用できるソフトウェア部品．
+ \item[プラグインコンポーネント(Plug-in Component)] フレームワーク・コ
+	    ンポーネントに接続することを前提としたコンポーネントで,必
+	    要に応じて作成・カスタマイズできる．
+ \item[プラグ・ポイント(Plug point)] コンポーネントをフレームワークに
+	    プラグインするために,フレームワークが用意する接続点
+\end{description}
+
+\section{フレームワークの作り方}
+フレームワークの構築へ向けて
+
+段階を追った学習
+
+もととなるプログラムを段階的に進化させる
+方針を立て、プログラミング演習で実装する
+
+アーキテクチャの表現と設計
+
+Java言語の各種のOO機能を活用して、フレームワー
+クを構築します
+
+クラス/インタフェイス/メソッド/フィールド/パッ
+ケージ・・・
+
+モデル(UML)によりアーキテクチャを表現する
+
+\section{リファクタリング・アプローチ}
+
+ボトムアップ・アプローチについて
+この授業のスタート地点
+ 目的の異なる2つのプログラム
+フレームワーク構築への道のり
+ プログラムの「アーキテクチャ」を捉える
+ 共通するアーキテクチャを探し出す
+ 共通化のための方針を立てる
+ 2つの「上位概念」を考える
+ フレームワークを完成させる
+リファクタリングとの関連
+ このアプローチはリファクタリングの一種でもある
+
+\section{ボトムアップ VS トップダウン}
+
+以上説明したボトムアップのアプローチに対して、トップダウンのアプローチというのもある
+
+最初から抽象度の高いアーキテクチャを「モデル」
+として設計し、プログラミングで実装する
+
+ボトムアップを採用する理由
+
+初心者にとって学習曲線が緩やかである
+
+実際の開発の現場でも、トップダウンとボトムアッ
+プは併用する
+
+\section{MVCパターン}
+
+% $ pdftk フレームワーク開発特論.pdf cat 29 output MVC.pdf
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=25mm 70mm 60mm 30mm,clip]
+   {MVC.pdf}
+  \caption{MVC構造（サンプルに合わせて書き直す）}
+\end{center}
+
+MVC (Model-View-Controller)の重要性
+ 主にグラフィカルなインタフェースを備えたソフト
+ウェアにおいて,広く一般的に利用するフレーム
+ワークである
+ 近年では、Webアプリケーションの構築にも利用す
+る
+ ただし、伝統的なMVC構造とは異なっている
+
+MVCは何に使われているのか?
+
+GUIを含むアプリケーションの再利用技術
+
+最初の本格的なオブジェクト指向言語である
+
+SmallTalkで採用
+
+MacintoshのUIでも使用
+
+Microsoft Windowsでも採用
+
+Webアプリケーションに適合するよう変化
+
+MVCの構造を理解するには?
+
+Model-View-Controllerの構造
+
+出展)「パターンとフレームワーク」共立出版
+MVCを達成するためのソースコードを書く
+ 
+\end{figure}
 
 
 \chapter{プログラムのアーキテクチャ}
@@ -161,6 +269,11 @@ MVCフレームワーク
 \begin{abstract}
 寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
 \end{abstract}
+
+\section{全部をmain()に書いた例)}
+悪い例
+
+インスタンス化について．．．
 
 \section{割り算をするプログラム}
 
@@ -196,6 +309,7 @@ MVCフレームワーク
 \section{Interfaceによる抽象化}
 \input{source_code/workspace/Division5/src/division/Division.java.tex}
 
+\newpage
 \section{演習問題}
 
 \begin{演習}
