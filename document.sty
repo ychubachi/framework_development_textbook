@@ -24,6 +24,15 @@
     \noindent\textbf{\large 演習{\thechapter}.\the演習番号}\par}
   {\vspace{\baselineskip}}
 
+%% 解答環境
+\newcounter{解答番号}[chapter] % 章のカウンタの子供カウンタの宣言
+\setcounter{解答番号}{0} % カウンタの初期化
+\newenvironment{解答}
+  {\refstepcounter{解答番号}
+    \vspace{\baselineskip}
+    \noindent\textbf{\large 解答{\thechapter}.\the解答番号}\par}
+  {\vspace{\baselineskip}}
+
 %% 傍注の設定
 \newcounter{marginpar}% 新しいカウンタ
   \let\org@marginpar\marginpar% オリジナルの命令を退避する

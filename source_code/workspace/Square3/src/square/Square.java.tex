@@ -1,14 +1,17 @@
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1,frame=single,fontsize=\small]
+\PY{k+kn}{package}\PY{+w}{ }\PY{n}{square}\PY{o}{;}
+
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{java.io.BufferedReader}\PY{o}{;}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{java.io.InputStreamReader}\PY{o}{;}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{java.io.IOException}\PY{o}{;}
 
 \PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{class}\PY{+w}{ }\PY{n+nc}{Square}\PY{+w}{ }\PY{o}{\PYZob{}}
-\PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{static}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{main}\PY{o}{(}\PY{n}{String}\PY{o}{[}\PY{o}{]}\PY{+w}{ }\PY{n}{args}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{Exception}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{static}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{main}\PY{o}{(}\PY{n}{String}\PY{o}{[}\PY{o}{]}\PY{+w}{ }\PY{n}{args}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{IOException}\PY{+w}{ }\PY{o}{\PYZob{}}
 \PY{+w}{    }\PY{+w}{    }\PY{n}{Square}\PY{+w}{ }\PY{n}{square}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{k}{new}\PY{+w}{ }\PY{n}{Square}\PY{o}{(}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{+w}{    }\PY{n}{square}\PY{o}{.}\PY{n+na}{run}\PY{o}{(}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{o}{\PYZcb{}}
 
-\PY{+w}{    }\PY{k+kd}{private}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{run}\PY{o}{(}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{Exception}\PY{+w}{ }\PY{o}{\PYZob{}}
+\PY{+w}{    }\PY{k+kd}{private}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{run}\PY{o}{(}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{IOException}\PY{+w}{ }\PY{o}{\PYZob{}}
 \PY{+w}{    }\PY{+w}{    }\PY{c+c1}{//}\PY{+w}{ }\PY{c+c1}{自乗を計算する値を入力する}
 \PY{+w}{    }\PY{+w}{    }\PY{n}{System}\PY{o}{.}\PY{n+na}{out}\PY{o}{.}\PY{n+na}{print}\PY{o}{(}\PY{l+s}{"自乗を計算する値を入力してください："}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{+w}{    }\PY{n}{BufferedReader}\PY{+w}{ }\PY{n}{reader}\PY{+w}{ }\PY{o}{=}

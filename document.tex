@@ -230,7 +230,8 @@ Java言語の各種のOO機能を活用して、フレームワー
   \includegraphics[width=0.8\textwidth, trim=25mm 70mm 60mm 30mm,clip]
    {MVC.pdf}
   \caption{MVC構造（サンプルに合わせて書き直す）}
-\end{center}
+ \end{center}
+\end{figure}
 
 MVC (Model-View-Controller)の重要性
  主にグラフィカルなインタフェースを備えたソフト
@@ -260,9 +261,168 @@ Model-View-Controllerの構造
 
 出展)「パターンとフレームワーク」共立出版
 MVCを達成するためのソースコードを書く
- 
+
+\subsection{フレームワークの利用}
+Java言語のSwingクラスライブラリを利用した
+MVC構造の実現
+
+自ら作成したMVCの構造を、Swingクラスライブラ
+リと組み合わせることで、GUIアプリケーションとし
+て完成させる
+
+\subsection{開発環境を活用したプログラミング}
+どういう開発環境を使うのか?
+• 「Eclipse(エクリプス)」を用いる
+• 主にJava言語を用いる開発環境のスタンダード
+Eclipseを利用するメリット
+• Eclipseはオープンソースの開発環境であり,無料で使うことができる
+• コンパイルの自動実行や,文法誤りの発見などの支援を受けることができる
+• 大規模なソースコードを管理する機能がある
+• 強力なリファクタリング機能
+フレームワークとしてのEclipse
+• Eclipseそのものがフレームワークを学ぶ教材
+• さまざまな機能拡張が可能で,開発者を支援するためのソフトウェア部品が
+数多く存在する
+
+\subsection{プログラミング言語の系譜}
+
+http://merd.sourceforge.net/pixel/language-study/diagram.html
+
+ 主要な言語
+ 詳細な図(150言語以上)
+
+プログラミング言語は人の手で作られた
+ Pascalを作った人
+ ニクラウス・ヴィルト
+ Java言語を作った人
+ ジェームズ・ゴスリン
+ Perlを作った人
+ ラリー・ウォール
+ Rubyを作った人
+ まつもとゆきひろ
+\section{IPOパターン}
+
+最も単純なソフトウェアのアーキテクチャ
+ IPO = Input + Process + Output
+IPOとは?
+ 入力処理/中核となる計算処理/出力処理のこと
+ 株式公開(Initial Public Offering)のことではないです...
+ソフトウェアのアーキテクチャの切り口
+ IPOをフレームワークとして用いることができる
+
+ソフトウェアはIPOから成り立つ．
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=10mm 30mm 10mm 45mm,clip]
+   {IPO.pdf}
+  \caption{IPOの模式図}
+ \end{center}
 \end{figure}
 
+大きなIPOはさらに細かいIPO構造を含む．
+最終的にはこれ以上細かくできない処理まで行き着く．
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=5mm 34mm 10mm 60mm,clip]
+   {IPO_tree.pdf}
+  \caption{IPOは階層構造になる}
+ \end{center}
+\end{figure}
+
+最も細かい粒度のIPO
+
+Input
+ メモリや
+ デバイス
+ からデー
+タを取り
+ 込む
+
+Process
+ CPUによ
+ る演算
+ 処理
+
+Output
+ メモリや
+ デバイス
+ への
+ データの
+ 送り込み
+
+\section{目的手段展開について}
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=10mm 18mm 20mm 30mm,clip]
+   {mokuteki_shudan.pdf}
+  \caption{目的手段展開の構造}
+ \end{center}
+\end{figure}
+
+目的型と手段型のコメント比較
+
+コメントには「目的(何をする・What)」を書
+く
+
+「手段(どうする・How)」はコードを読めば分か
+る
+
+手段型のコメント
+\begin{verbatim}
+	// totalをcountで割る
+	average = total / count;
+\end{verbatim}
+
+目的型のコメント
+\begin{verbatim}
+	// 平均点を求める
+	average = total / count;
+\end{verbatim}
+
+\section{演習問題}
+\begin{演習}
+身近な次のソフトウェアのIPOはそれぞれなにか?
+ ウェブブラウザ
+ ワードプロセッサ
+ メールリーダ
+ データベース
+ OS 
+\end{演習}
+
+\begin{演習}
+「全てのソフトウェアは必ずIPOを備える」は正しいか?
+\end{演習}
+
+\begin{演習}
+(InputとOutputがない)Processだけのソフトウェアには価値があるか?
+\end{演習}
+
+\begin{演習}
+IPOフレームワークに基づく「プログラムの価値(=プログラが何を目的として達成する
+か)」とは?
+\end{演習}
+
+\begin{演習}
+ 次の???にコメントを書くとしたらどうします
+か?
+\begin{verbatim}
+	double a = 4.56;
+	// ???
+	int b = (int) (a + 0.5);
+	System.out.println(b);
+\end{verbatim}
+\end{演習}
+\section{解答}
+\begin{解答}
+ 視点(領域)の設定や、
+粒度によって、答えは異なる
+\end{解答}
 
 \chapter{プログラムのアーキテクチャ}
 
@@ -271,7 +431,10 @@ MVCを達成するためのソースコードを書く
 \end{abstract}
 
 \section{全部をmain()に書いた例)}
-悪い例
+最近は余り見かけないが，一昔前のJava言語の入門書には最初のプログラムの
+例として次のようなコードが載っていたものである．
+
+\input{source_code/workspace/Square0/src/square/Square.java.tex}
 
 インスタンス化について．．．
 
@@ -281,32 +444,81 @@ MVCを達成するためのソースコードを書く
 
 実際に実行すると，このコードは割り算をして商と余を計算して表示します．
 
-\input{source_code/workspace/Division1/src/division/Division.java.tex}
 
 1行目はsquareというパッケージ宣言です（正式は？）\marginpar{パッケージ
 については・・・を参照．}．
 
-\section{コメント・ブロック}
+\section{コメント・ブロックによる構造の整理}
+コメントによるブロックの作り方．
+コメントと空行の組み合わせ．
+
+\begin{verbatim}
+private void run() throws Exception {
+    // ○○を入力する
+    aaa();
+    bbb();
+
+    // ○○を計算する
+    ccc();
+
+    // ○○を出力する
+    ddd();
+}
+\end{verbatim}
+
 それでは，次の例題を考えてみましょう．
 
 \begin{例題}
- Divisionクラスの\texttt{run()}メソッド内のコードを入力・処理・出力のパ
- ターンで分類せよ．
+ Divisionクラスの\texttt{run()}メソッド内のコードのうち，入力・処理・
+ 出力はそれぞれどれか．
 \end{例題}
 
-このクラスをUMLで表現する．
+答えは次の通りだ．
 
-答えは次のとおりです．
 
-\input{source_code/workspace/Division2/src/division/Division.java.tex}
+最初のコードから変わった点
+プログラムの全体構造
+
+ Input-Process-Outputという構造が人間にとって分
+かりやすい
+
+ 保守性の向上(人に優しいプログラミング)
+
+TODO:このクラスをUMLで表現する．
 
 \section{情報を束ねるクラス}
-\input{source_code/workspace/Division3/src/division/Division.java.tex}
 
 \section{操作を束ねるクラス}
-\input{source_code/workspace/Division4/src/division/Division.java.tex}
+
+コメントブロックの効果と問題
+• プログラムのどの部分がIPOを担っているのかが明確
+になった
+• しかしながら,プログラムの規模が大きくなった場合,
+一目で全体構造を捉えることが難しくなる
+• コードが長くなるから
+一目で分かるメインメソッド
+• メイン関数に書いてある記述をメソッドで外部化するこ
+とで,プログラムの構造をより見えやすくしよう
+
+IPOをメソッドにする
+シンプルでビューティフルなメソッドになる
+ プログラムの全体の構造が一目で把握できる
+
+\begin{verbatim}
+private void run() throws Exception {
+    double input = input();
+    double output = process(input);
+    output (output);
+}
+\end{verbatim}
+
+
 
 \section{Interfaceによる抽象化}
+\input{source_code/workspace/Division1/src/division/Division.java.tex}
+\input{source_code/workspace/Division2/src/division/Division.java.tex}
+\input{source_code/workspace/Division3/src/division/Division.java.tex}
+\input{source_code/workspace/Division4/src/division/Division.java.tex}
 \input{source_code/workspace/Division5/src/division/Division.java.tex}
 
 \newpage
@@ -315,7 +527,7 @@ MVCを達成するためのソースコードを書く
 \begin{演習}
  コメントブロックを用いて，このプログラムを入力・処理・出力に整理しなさ
  い．
- \input{source_code/workspace/Square1/src/square/Square.java.tex}
+
 \end{演習}
 
 \begin{演習}
