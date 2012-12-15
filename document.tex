@@ -118,23 +118,26 @@ MVCフレームワーク
 \chapter{フレームワークとはなにか}
 
 \begin{abstract}
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
+寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に
+住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイ
+のポンポコピーのポンポコナーの長久命の長助．
 \end{abstract}
 
 \section{フレームワークの定義}
-フレームワークの一般的な定義 
+\subsection{フレームワークの一般的な定義 }
 
-１．抽象クラスの集合とそのインスタンス間の相互
-作用によって表現された，システムの全体または一
-部の再利用可能な設計 
-
-２．開発者がカスタマイズできる，アプリケーショ
-ンの骨組み 
+\begin{enumerate}
+ \item 抽象クラスの集合とそのインスタンス間の相互作用によって表現された，
+システムの全体または一部の再利用可能な設計
+ \item 開発者がカスタマイズできる，アプリケーションの骨組み
+\end{enumerate}
 
  出典） R.ジョンソン，中村宏明，中山裕子，吉田和樹著，
 「パターンとフレームワーク」，共立出版 
 
-\section{フレームワークの重要な性質}
+簡単に言えば「枠組み」のことだ．
+
+\subsection{フレームワークの重要な性質}
 ハリウッド・プリンシプル 
 
 映画監督のセリフ 
@@ -150,16 +153,19 @@ MVCフレームワーク
 は，フレームワークを呼び出すのではなく，フレー
 ムワークに呼び出されるのを待つ 
 
-\section{フレームワークに関係する用語}
+\subsection{フレームワークに関係する用語}
 
 \begin{figure}
  \begin{center}
   %trim option's parameter order: left bottom right top
   \includegraphics[width=0.8\textwidth, trim=30mm 30mm 35mm
   35mm,clip]{framework.pdf}
-  \caption{フレームワークのアーキテクチャ例}
+  \caption{フレームワークのアーキテクチャ例}\label{fig:framework_architecture}
  \end{center}
 \end{figure}
+
+図\ref{fig:framework_architecture}にフレームワークのアーキテクチャを概
+念的に示した．
 
 \begin{description}
  \item[コンポーネント(component)] 1つまたはそれ以上のクラスからなる,特
@@ -193,7 +199,7 @@ Java言語の各種のOO機能を活用して、フレームワー
 
 モデル(UML)によりアーキテクチャを表現する
 
-\section{リファクタリング・アプローチ}
+\subsection{リファクタリング・アプローチ}
 
 ボトムアップ・アプローチについて
 この授業のスタート地点
@@ -207,7 +213,7 @@ Java言語の各種のOO機能を活用して、フレームワー
 リファクタリングとの関連
  このアプローチはリファクタリングの一種でもある
 
-\section{ボトムアップ VS トップダウン}
+\subsection{ボトムアップ VS トップダウン}
 
 以上説明したボトムアップのアプローチに対して、トップダウンのアプローチというのもある
 
@@ -221,85 +227,6 @@ Java言語の各種のOO機能を活用して、フレームワー
 実際の開発の現場でも、トップダウンとボトムアッ
 プは併用する
 
-\section{MVCパターン}
-
-% $ pdftk フレームワーク開発特論.pdf cat 29 output MVC.pdf
-\begin{figure}
- \begin{center}
-  %trim option's parameter order: left bottom right top
-  \includegraphics[width=0.8\textwidth, trim=25mm 70mm 60mm 30mm,clip]
-   {MVC.pdf}
-  \caption{MVC構造（サンプルに合わせて書き直す）}
- \end{center}
-\end{figure}
-
-MVC (Model-View-Controller)の重要性
- 主にグラフィカルなインタフェースを備えたソフト
-ウェアにおいて,広く一般的に利用するフレーム
-ワークである
- 近年では、Webアプリケーションの構築にも利用す
-る
- ただし、伝統的なMVC構造とは異なっている
-
-MVCは何に使われているのか?
-
-GUIを含むアプリケーションの再利用技術
-
-最初の本格的なオブジェクト指向言語である
-
-SmallTalkで採用
-
-MacintoshのUIでも使用
-
-Microsoft Windowsでも採用
-
-Webアプリケーションに適合するよう変化
-
-MVCの構造を理解するには?
-
-Model-View-Controllerの構造
-
-出展)「パターンとフレームワーク」共立出版
-MVCを達成するためのソースコードを書く
-
-\subsection{フレームワークの利用}
-Java言語のSwingクラスライブラリを利用した
-MVC構造の実現
-
-自ら作成したMVCの構造を、Swingクラスライブラ
-リと組み合わせることで、GUIアプリケーションとし
-て完成させる
-
-\subsection{開発環境を活用したプログラミング}
-どういう開発環境を使うのか?
-• 「Eclipse(エクリプス)」を用いる
-• 主にJava言語を用いる開発環境のスタンダード
-Eclipseを利用するメリット
-• Eclipseはオープンソースの開発環境であり,無料で使うことができる
-• コンパイルの自動実行や,文法誤りの発見などの支援を受けることができる
-• 大規模なソースコードを管理する機能がある
-• 強力なリファクタリング機能
-フレームワークとしてのEclipse
-• Eclipseそのものがフレームワークを学ぶ教材
-• さまざまな機能拡張が可能で,開発者を支援するためのソフトウェア部品が
-数多く存在する
-
-\subsection{プログラミング言語の系譜}
-
-http://merd.sourceforge.net/pixel/language-study/diagram.html
-
- 主要な言語
- 詳細な図(150言語以上)
-
-プログラミング言語は人の手で作られた
- Pascalを作った人
- ニクラウス・ヴィルト
- Java言語を作った人
- ジェームズ・ゴスリン
- Perlを作った人
- ラリー・ウォール
- Rubyを作った人
- まつもとゆきひろ
 \section{IPOパターン}
 
 最も単純なソフトウェアのアーキテクチャ
@@ -354,6 +281,88 @@ Output
  データの
  送り込み
 
+\section{MVCパターン}
+
+% $ pdftk フレームワーク開発特論.pdf cat 29 output MVC.pdf
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=25mm 70mm 60mm 30mm,clip]
+   {MVC.pdf}
+  \caption{MVC構造（サンプルに合わせて書き直す）}
+ \end{center}
+\end{figure}
+
+MVC (Model-View-Controller)の重要性
+ 主にグラフィカルなインタフェースを備えたソフト
+ウェアにおいて,広く一般的に利用するフレーム
+ワークである
+ 近年では、Webアプリケーションの構築にも利用す
+る
+ ただし、伝統的なMVC構造とは異なっている
+
+MVCは何に使われているのか?
+
+GUIを含むアプリケーションの再利用技術
+
+最初の本格的なオブジェクト指向言語である
+
+SmallTalkで採用
+
+MacintoshのUIでも使用
+
+Microsoft Windowsでも採用
+
+Webアプリケーションに適合するよう変化
+
+MVCの構造を理解するには?
+
+Model-View-Controllerの構造
+
+出展)「パターンとフレームワーク」共立出版
+MVCを達成するためのソースコードを書く
+
+\subsection{GUIへの適用}
+Java言語のSwingクラスライブラリを利用した
+MVC構造の実現
+
+自ら作成したMVCの構造を、Swingクラスライブラ
+リと組み合わせることで、GUIアプリケーションとし
+て完成させる
+
+\subsection{開発環境を活用したプログラミング}
+どういう開発環境を使うのか?
+• 「Eclipse(エクリプス)」を用いる
+• 主にJava言語を用いる開発環境のスタンダード
+Eclipseを利用するメリット
+• Eclipseはオープンソースの開発環境であり,無料で使うことができる
+• コンパイルの自動実行や,文法誤りの発見などの支援を受けることができる
+• 大規模なソースコードを管理する機能がある
+• 強力なリファクタリング機能
+フレームワークとしてのEclipse
+• Eclipseそのものがフレームワークを学ぶ教材
+• さまざまな機能拡張が可能で,開発者を支援するためのソフトウェア部品が
+数多く存在する
+
+\subsection{プログラミング言語は人間が作った}
+
+我々が日常生活で使っている言語（日本語など）を自然言語とするならば，プ
+ログラミング言語は人工言語だと言える．
+
+http://merd.sourceforge.net/pixel/language-study/diagram.html
+
+ 主要な言語
+ 詳細な図(150言語以上)
+
+プログラミング言語は人の手で作られた
+ Pascalを作った人
+ ニクラウス・ヴィルト
+ Java言語を作った人
+ ジェームズ・ゴスリン
+ Perlを作った人
+ ラリー・ウォール
+ Rubyを作った人
+ まつもとゆきひろ
 \section{目的手段展開について}
 
 \begin{figure}
@@ -430,25 +439,49 @@ IPOフレームワークに基づく「プログラムの価値(=プログラが
 寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
 \end{abstract}
 
-\section{全部をmain()に書いた例)}
-最近は余り見かけないが，一昔前のJava言語の入門書には最初のプログラムの
-例として次のようなコードが載っていたものである．
+\section{ほげほげ}
+寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
 
-\input{source_code/workspace/Square0/src/square/Square.java.tex}
+\newpage
+\section{オブジェクト指向らしくないサンプルコード}
+最近はあまり見かけないが，一昔前のJava言語の入門書には最初のプログラム
+の例として次のようなコードが載っていたものである．
 
-インスタンス化について．．．
+このコードはとても問題のあるコードである．一言で言えば，オブジェクト指
+向言語たるJavaらしくないコードなのだ．
 
-\section{割り算をするプログラム}
+しかし，前述のとおり，Java言語を
+初心者に教えようとすると，このコードのような例を最初に取り上げるのは致
+し方がない面がある．
 
-次のコードは，Divisionという名前のクラスを定義します．
-
-実際に実行すると，このコードは割り算をして商と余を計算して表示します．
-
+1行目から8行目辺りまでを「おまじない」として，9行目から15行目までの解
+説をする所からはじめるであろう．
 
 1行目はsquareというパッケージ宣言です（正式は？）\marginpar{パッケージ
 については・・・を参照．}．
 
-\section{コメント・ブロックによる構造の整理}
+\newpage
+\input{source_code/workspace/Square0/src/square/Square.java.tex}
+\newpage
+
+
+\subsection{クラスとインスタンス}
+インスタンス生成を用いて書き直すと次の通りになる．
+
+
+それでは，次の例題を考えてみよう．
+
+\begin{例題}
+ Squareクラスの\texttt{run()}メソッド内のコードのうち，入力・処理・
+ 出力はそれぞれどれか．
+\end{例題}
+
+\newpage
+\input{source_code/workspace/Square1/src/square/Square.java.tex}
+\newpage
+
+\subsection{コメント・ブロック}
+
 コメントによるブロックの作り方．
 コメントと空行の組み合わせ．
 
@@ -466,15 +499,7 @@ private void run() throws Exception {
 }
 \end{verbatim}
 
-それでは，次の例題を考えてみましょう．
-
-\begin{例題}
- Divisionクラスの\texttt{run()}メソッド内のコードのうち，入力・処理・
- 出力はそれぞれどれか．
-\end{例題}
-
 答えは次の通りだ．
-
 
 最初のコードから変わった点
 プログラムの全体構造
@@ -486,10 +511,11 @@ private void run() throws Exception {
 
 TODO:このクラスをUMLで表現する．
 
-\section{情報を束ねるクラス}
+\newpage
+\input{source_code/workspace/Square2/src/square/Square.java.tex}
+\newpage
 
-\section{操作を束ねるクラス}
-
+\subsection{メソッド}
 コメントブロックの効果と問題
 • プログラムのどの部分がIPOを担っているのかが明確
 になった
@@ -512,30 +538,37 @@ private void run() throws Exception {
 }
 \end{verbatim}
 
+IPOをメソッドにしたコードは次のとおりになる．
+\newpage
+\input{source_code/workspace/Square3/src/square/Square.java.tex}
+\newpage
 
 
-\section{Interfaceによる抽象化}
-\input{source_code/workspace/Division1/src/division/Division.java.tex}
-\input{source_code/workspace/Division2/src/division/Division.java.tex}
-\input{source_code/workspace/Division3/src/division/Division.java.tex}
-\input{source_code/workspace/Division4/src/division/Division.java.tex}
-\input{source_code/workspace/Division5/src/division/Division.java.tex}
+\subsection{Square4: 情報を束ねるためのクラス}
+カプセル化
 
 \newpage
+\input{source_code/workspace/Square4/src/square/Square.java.tex}
+\newpage
+
+\subsection{Square5: 「枠組み」を抽出する}
+インタフェイス
+
+\newpage
+\input{source_code/workspace/Square5/src/square/Square.java.tex}
+\newpage
+
 \section{演習問題}
 
 \begin{演習}
  コメントブロックを用いて，このプログラムを入力・処理・出力に整理しなさ
  い．
-
+\input{source_code/workspace/Division1/src/division/Division.java.tex}
+\input{source_code/workspace/Division2/src/division/Division.java.tex}
+\input{source_code/workspace/Division3/src/division/Division.java.tex}
+\input{source_code/workspace/Division4/src/division/Division.java.tex}
+\input{source_code/workspace/Division5/src/division/Division.java.tex}
 \end{演習}
-
-\begin{演習}
- Java言語ではクラスの名前とファイル名を一致させる必要がある．他のオブジェ
- クト指向型言語の場合を調べよ．また，クラス名とファイル名を一致させるこ
- との長所・短所について考察せよ．
-\end{演習}
- 
 
 \section{パッケージとクラスの可視性}
 パッケージは名前空間です．
@@ -554,4 +587,10 @@ private void run() throws Exception {
        戻り
 \end{enumerate}
 
+
+\begin{演習}
+ Java言語ではクラスの名前とファイル名を一致させる必要がある．他のオブジェ
+ クト指向型言語の場合を調べよ．また，クラス名とファイル名を一致させるこ
+ との長所・短所について考察せよ．
+\end{演習}
 \end{document}

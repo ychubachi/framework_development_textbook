@@ -13,17 +13,29 @@
 
 \PY{+w}{    }\PY{k+kd}{private}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{run}\PY{o}{(}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{IOException}\PY{+w}{ }\PY{o}{\PYZob{}}
 \PY{+w}{    }\PY{+w}{    }\PY{c+c1}{//}\PY{+w}{ }\PY{c+c1}{自乗を計算する値を入力する}
+\PY{+w}{    }\PY{+w}{    }\PY{k+kt}{double}\PY{+w}{ }\PY{n}{value}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{input}\PY{o}{(}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{c+c1}{//}\PY{+w}{ }\PY{c+c1}{自乗を計算する}
+\PY{+w}{    }\PY{+w}{    }\PY{k+kt}{double}\PY{+w}{ }\PY{n}{result}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{process}\PY{o}{(}\PY{n}{value}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{c+c1}{//}\PY{+w}{ }\PY{c+c1}{計算結果を出力する}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{output}\PY{o}{(}\PY{n}{result}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{o}{\PYZcb{}}
+
+\PY{+w}{    }\PY{k+kd}{private}\PY{+w}{ }\PY{k+kt}{double}\PY{+w}{ }\PY{n+nf}{input}\PY{o}{(}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{IOException}\PY{+w}{ }\PY{o}{\PYZob{}}
 \PY{+w}{    }\PY{+w}{    }\PY{n}{System}\PY{o}{.}\PY{n+na}{out}\PY{o}{.}\PY{n+na}{print}\PY{o}{(}\PY{l+s}{"自乗を計算する値を入力してください："}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{+w}{    }\PY{n}{BufferedReader}\PY{+w}{ }\PY{n}{reader}\PY{+w}{ }\PY{o}{=}
 \PY{+w}{    }\PY{+w}{    }\PY{+w}{    }\PY{k}{new}\PY{+w}{ }\PY{n+nf}{BufferedReader}\PY{o}{(}
 \PY{+w}{    }\PY{+w}{    }\PY{+w}{    }\PY{+w}{    }\PY{k}{new}\PY{+w}{ }\PY{n+nf}{InputStreamReader}\PY{o}{(}\PY{n}{System}\PY{o}{.}\PY{n+na}{in}\PY{o}{)}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{+w}{    }\PY{n}{String}\PY{+w}{ }\PY{n}{valueString}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{reader}\PY{o}{.}\PY{n+na}{readLine}\PY{o}{(}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{+w}{    }\PY{k+kt}{double}\PY{+w}{ }\PY{n}{value}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{Double}\PY{o}{.}\PY{n+na}{parseDouble}\PY{o}{(}\PY{n}{valueString}\PY{o}{)}\PY{o}{;}
-\PY{+w}{    }\PY{+w}{    }
-\PY{+w}{    }\PY{+w}{    }\PY{c+c1}{//}\PY{+w}{ }\PY{c+c1}{自乗を計算する}
+\PY{+w}{    }\PY{+w}{    }\PY{k}{return}\PY{+w}{ }\PY{n}{value}\PY{o}{;}
+\PY{+w}{    }\PY{o}{\PYZcb{}}
+
+\PY{+w}{    }\PY{k+kd}{private}\PY{+w}{ }\PY{k+kt}{double}\PY{+w}{ }\PY{n+nf}{process}\PY{o}{(}\PY{k+kt}{double}\PY{+w}{ }\PY{n}{value}\PY{o}{)}\PY{+w}{ }\PY{o}{\PYZob{}}
 \PY{+w}{    }\PY{+w}{    }\PY{k+kt}{double}\PY{+w}{ }\PY{n}{result}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{value}\PY{+w}{ }\PY{o}{*}\PY{+w}{ }\PY{n}{value}\PY{o}{;}
-\PY{+w}{    }\PY{+w}{    }
-\PY{+w}{    }\PY{+w}{    }\PY{c+c1}{//}\PY{+w}{ }\PY{c+c1}{計算結果を出力する}
+\PY{+w}{    }\PY{+w}{    }\PY{k}{return}\PY{+w}{ }\PY{n}{result}\PY{o}{;}
+\PY{+w}{    }\PY{o}{\PYZcb{}}
+
+\PY{+w}{    }\PY{k+kd}{private}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{output}\PY{o}{(}\PY{k+kt}{double}\PY{+w}{ }\PY{n}{result}\PY{o}{)}\PY{+w}{ }\PY{o}{\PYZob{}}
 \PY{+w}{    }\PY{+w}{    }\PY{n}{System}\PY{o}{.}\PY{n+na}{out}\PY{o}{.}\PY{n+na}{println}\PY{o}{(}\PY{l+s}{"計算結果："}\PY{+w}{ }\PY{o}{+}\PY{+w}{ }\PY{n}{result}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{o}{\PYZcb{}}
 \PY{o}{\PYZcb{}}
