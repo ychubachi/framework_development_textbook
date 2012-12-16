@@ -394,6 +394,26 @@ http://merd.sourceforge.net/pixel/language-study/diagram.html
 	average = total / count;
 \end{verbatim}
 
+\subsection{コメント・ブロック}
+コメントによるブロックの作り方．
+コメントと空行の組み合わせ．
+
+\begin{verbatim}
+private void run() throws Exception {
+    // ○○を入力する
+    aaa();
+    bbb();
+
+    // ○○を計算する
+    ccc();
+
+    // ○○を出力する
+    ddd();
+}
+\end{verbatim}
+
+
+
 \section{演習問題}
 \begin{演習}
 身近な次のソフトウェアのIPOはそれぞれなにか?
@@ -439,83 +459,75 @@ IPOフレームワークに基づく「プログラムの価値(=プログラが
 寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
 \end{abstract}
 
-\section{ほげほげ}
-寿限無寿限無五劫の摺り切れ海砂利水魚の水行末雲来末風来末．食う寝る所に住む所藪柑子ブラコウジ．パイポパイポパイポのシューリンガングーリンダイのポンポコピーのポンポコナーの長久命の長助．
+\section{プログラムの「開始点」}
+あなたは,ここ1年以内に,業務で(大学の演習
+等を除く)「開始点(mainメソッド)」のある
+ソースコードを書いたことがありますか?
+ない場合,その理由はなぜですか?
 
-\newpage
-\section{オブジェクト指向らしくないサンプルコード}
-最近はあまり見かけないが，一昔前のJava言語の入門書には最初のプログラム
-の例として次のようなコードが載っていたものである．
+スターティングポイント
+ どんなプログラムにも「開始点」がある
 
-このコードはとても問題のあるコードである．一言で言えば，オブジェクト指
-向言語たるJavaらしくないコードなのだ．
+開始点の例
+ Java言語の場合
+ main()メソッド
+ C言語の場合
+ main()関数
+ 他の言語の場合は?
+ ???
 
-しかし，前述のとおり，Java言語を
-初心者に教えようとすると，このコードのような例を最初に取り上げるのは致
-し方がない面がある．
+Javaのmain()メソッドはなぜstaticか?
+仮にMainクラスがあり、コンパイル済みである
+とき
 
-1行目から8行目辺りまでを「おまじない」として，9行目から15行目までの解
-説をする所からはじめるであろう．
+ 「java Main」コマンドでJVMが起動
 
-1行目はsquareというパッケージ宣言です（正式は？）\marginpar{パッケージ
-については・・・を参照．}．
+ JVMは,クラスのインスタンスを生成しない
 
-\newpage
-\input{source_code/workspace/Square0/src/square/Square.java.tex}
-\newpage
+ したがって,Mainクラスの通常メソッドは呼び出せ
+ない
 
+考えてみよう
 
-\subsection{クラスとインスタンス}
-インスタンス生成を用いて書き直すと次の通りになる．
+ もし,JVM起動時にMainインスタンスを自動生成す
+ると?
 
+ プログラマがMainクラスの初期化(コンストラクタへの引
+数設定)を制御することができなくなってしまう
 
-それでは，次の例題を考えてみよう．
+– 制御できない=プログラマはとても不自由になる
 
-\begin{例題}
- Squareクラスの\texttt{run()}メソッド内のコードのうち，入力・処理・
- 出力はそれぞれどれか．
-\end{例題}
+Javaのmain()でやるべきこと
 
-\newpage
-\input{source_code/workspace/Square1/src/square/Square.java.tex}
-\newpage
+本来,main()でやるべきこと
+ (OSからの引数の受け取り処理)
+ 中心となる(Main)クラスのインスタンスの生成
+ インスタンスの開始メソッド呼び出し
+ など
 
-\subsection{コメント・ブロック}
+注意
 
-コメントによるブロックの作り方．
-コメントと空行の組み合わせ．
+ 教科書に出てくる短いサンプルならいざ知らず,
+main()内に複雑なロジックを記述してはいけない
 
-\begin{verbatim}
-private void run() throws Exception {
-    // ○○を入力する
-    aaa();
-    bbb();
+\section{クラスとインスタンス}
 
-    // ○○を計算する
-    ccc();
+Java言語におけるクラスの取り扱い
+ クラスを定義する
+ インスタンスを生成する
+ インスタンスを使用する
+ 具体的にはメソッド呼び出し
 
-    // ○○を出力する
-    ddd();
-}
-\end{verbatim}
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=10mm 10mm 5mm 13mm,clip]
+   {class_instance.pdf}
+  \caption{クラスの定義とインスタンスの生成・使用}
+ \end{center}
+\end{figure}
 
-答えは次の通りだ．
-
-最初のコードから変わった点
-プログラムの全体構造
-
- Input-Process-Outputという構造が人間にとって分
-かりやすい
-
- 保守性の向上(人に優しいプログラミング)
-
-TODO:このクラスをUMLで表現する．
-
-\newpage
-\input{source_code/workspace/Square2/src/square/Square.java.tex}
-\newpage
-
-\subsection{メソッド}
+section{メソッド}
 コメントブロックの効果と問題
 • プログラムのどの部分がIPOを担っているのかが明確
 になった
@@ -538,40 +550,359 @@ private void run() throws Exception {
 }
 \end{verbatim}
 
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=33mm 18mm 15mm 35mm,clip]
+   {run.pdf}
+  \caption{メソッドの階層構造}
+ \end{center}
+\end{figure}
+
+メソッドを利用する目的
+
+同じ処理を複数回利用する
+
+• 一般的なメソッドの利用目的であり,保守性の向上な
+どでメリットがある
+
+処理の構造を明確化する
+
+• メソッドには,処理の構造を明確にするという役割が
+ある.
+
+• これはすなわち,1度しか呼ばないメソッドであっても,
+その作成価値はあるということでもある.
+
+\section{メソッドのシグネチャ}
+
+メソッドのシグネチャと戻り値の型
+メソッドのシグネチャ(signature)とは?
+ あるメソッドと他のメソッドを区別するためのもの
+シグネチャの構成要素(一般的なもの)
+Java言語では、
+ メソッド名
+他に限定子・例外も
+シグネチャに含めます
+ 引数の数と型
+ 戻り値の型・・・(Java言語では考慮されない)
+シグネチャの例
+ public static void main(String[] args)
+ メソッド名:
+ 引数の数と型:
+ 戻り値の型:
+main
+Stringの配列が1つ
+void
+
+メソッドの「宣言」と「実装」
+
+メソッドの宣言とは?
+
+ メソッドの「シグネチャ」を定義すること
+
+メソッドの実装とは?
+
+ メソッドの宣言に基づき,メソッドの実際の振る舞
+いを記述すること
+
+「宣言」と「実装」を分離して考える理由
+
+ 他のメソッドから,あるメソッドを呼び出す場合,
+呼び出し側はそのメソッドの「宣言」に適合してい
+ればよい
+
+ 「実装」については考えなくてもよい
+Java言語の宣言と実装
+通常,Java言語では,メソッドの「宣言」と
+「実装」を同時に取り扱う
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=15mm 15mm 15mm 75mm,clip]
+   {signature.pdf}
+  \caption{Java言語の宣言と実装}
+ \end{center}
+\end{figure}
+
+\newpage
+
+\chapter{例題と演習}
+\section{例題}
+%スライドpp.90--97
+
+この演習では・・・を目指す．
+
+\newpage
+\subsection{Square0: 自乗を計算するプログラム}
+最近はあまり見かけないが，一昔前のJava言語の入門書には最初のプログラム
+の例として右頁のようなコードが載っていたものである．
+
+このコードはとても問題のあるコードである．一言で言えば，オブジェクト指
+向言語たるJavaらしくないコードなのだ．
+
+しかし，前述のとおり，Java言語を
+初心者に教えようとすると，このコードのような例を最初に取り上げるのは致
+し方がない面がある．
+
+1行目から8行目辺りまでを「おまじない」として，9行目から15行目までの解
+説をする所からはじめるであろう．
+
+1行目はsquareというパッケージ宣言です（正式は？）\marginpar{パッケージ
+については・・・を参照．}．
+
+\begin{例題}
+ インスタンス生成を用いて書き直せ．
+\end{例題}
+
+\newpage
+\input{source_code/workspace/Square0/src/square/Square.java.tex}
+\newpage
+
+\subsection{Square1: クラスとインスタンス}
+
+\texttt{new}演算子を用い，インスタンスを作成して，メソッドを呼び出す，
+オブジェクト指向らしいプログラムにしたのが左頁のソースコードである．
+
+それでは，次の例題を考えてみよう．
+
+\begin{例題}
+ Squareクラスの\texttt{run()}メソッド内のコードのうち，入力・処理・
+ 出力はそれぞれどれか．
+\end{例題}
+
+・・・は出力なのだろうんか？
+？で述べたとおり，目的手段の考え方をしよう．
+・・・の目的はなにか．
+
+では，実際に，コメント・ブロックを用いてソースコードを分けてみてほしい．
+
+\begin{例題}
+ブロックによる構造の整理 
+
+プログラムを編集し,コメントブロックにより
+IPOごとに整理しなさい
+
+
+\end{例題}
+ ヒント プロセスとアウトプットを分離するためには,少々工夫が
+必要
+
+\newpage
+\input{source_code/workspace/Square1/src/square/Square.java.tex}
+\newpage
+
+
+\subsection{Square2: コメント・ブロック}
+
+答えは次の通りだ．
+
+最初のコードから変わった点
+プログラムの全体構造
+
+ Input-Process-Outputという構造が人間にとって分
+かりやすい
+
+ 保守性の向上(人に優しいプログラミング)
+
+23行がポイントだ．
+人間にとってわかりやすくなった代償として，変数が1つ増えている．
+
+\begin{例題}
+ 「自乗を計算する」プログラムのメソッド化
+
+ 自乗を計算するプログラムのIPOをメソッドにして
+みよう
+\end{例題}
+
+IPOの各メソッドのシグネチャは次のとおりとする．
+
+\begin{verbatim}
+入力: private double input() throws IOException
+処理: private double process(double input)
+出力: private void output(double output)
+\end{verbatim}
+
+\newpage
+\input{source_code/workspace/Square2/src/square/Square.java.tex}
+\newpage
+
+\subsection{Square3: IPOをメソッドにする}
 IPOをメソッドにしたコードは次のとおりになる．
+
 \newpage
 \input{source_code/workspace/Square3/src/square/Square.java.tex}
 \newpage
 
+\section{演習問題}
+\begin{演習}
+ 右頁のプログラムをコメント・ブロックにより入力・処理・出力の構造を明
+ 確にせよ．
+\end{演習}
+\newpage
+\input{source_code/workspace/Division1/src/division/Division.java.tex}
+\newpage
+\chapter{ほげほげ}
 
-\subsection{Square4: 情報を束ねるためのクラス}
+\section{複数の値を束ねるクラス}
+演習？で取り上げた「割り算を計算する」プログラムは，
+
+• このプログラムは,割られる数と割る数を入力に取り,
+商と余を返す
+
+• 即ち,入力値が2つ,出力値も2つである
+
+Java言語のメソッドの制限
+
+• Java言語のメソッドは,複数の値を入力として受け取る
+ことはできるが,複数の値を出力することができない
+
+• この問題を解決するには,どうしたらよいだろうか?
+
+\section{Javaのメソッドの文法上の制約}
+
+Java言語のメソッドは,次の構造である
+
+ 出力値=メソッド(入力値1,入力値2,...入力値n)
+
+割り算を計算するプログラムには,出力値が2つあ
+る
+
+ 自乗を計算するプログラムの場合と同様の方法で入出力を
+メソッドにすることはできない
+
+ Eclipseのリファクタリング機能も使えない
+この問題を「クラス」を導入することで解決しよう
+
+ 注意)
+
+ 他のプログラミング言語(LispやPerlなど)は,複数の出力値
+を返すメソッド(関数)を作成できるものもある
+
+複数の値を束ねる手段としてのクラス
+ここでは,Javaのクラスが持つ多くの性質のう
+ち,「複数の値を束ねる」側面を使ってみよう
+
+入出力クラスを使ったメソッド
+
+次のようなコードが可能になるため,複数の入
+力値・出力値をメソッドに引き渡すことができ
+る
+
+\begin{verbatim}
+	入力クラス input;
+	出力クラス output;
+	output = 処理(input)
+\end{verbatim}
+
+なお,別な方法として,参照渡しを使って次のよう
+にすることもできるが,まずはシンプルな方法を採
+用する
+
+\begin{verbatim}
+	入力クラス input = new 入力クラス();
+	出力クラス output = new 出力クラス();
+	処理(input, output)
+\end{verbatim}
+
+\newpage
+\chapter{例題と演習}
+\section{ほげほげ}
+この例題は・・・・演習は・・・．
+\newpage
+\section{例題}
+\subsection{Division2: 割り算の入出力値にクラスを導入}
+
+右頁のコードは・・・
+
+
+「割る数と割られる数」は次のクラスで表そう．
+\input{source_code/workspace/Division3/src/division/DividendAndDivisor.java.tex}
+
+「商と余」は次のクラスを用いる．
+\input{source_code/workspace/Division3/src/division/QuotientAndRemainder.java.tex}
+
+なお，メソッドはまだ導入しなくて良い．
+
+\newpage
+\input{source_code/workspace/Division2/src/division/Division.java.tex}
+\newpage
+\subsection{Division3: メソッド化}
+2つのクラスを導入したコードは右頁のとおりだ．
+14行と25行がインスタンスを生成している部分である．
+
+\begin{例題}
+ メソッドを導入せよ．
+\end{例題}
+
+新しい\texttt{run()}は次のとおりになるだろう．
+
+\begin{verbatim}
+	private void run() throws Exception {
+	    DividendAndDivisor input = input();
+	    QuotientAndRemainder output = process(input);
+	    output (output);
+	}
+\end{verbatim}
+
+\newpage
+\input{source_code/workspace/Division3/src/division/Division.java.tex}
+\newpage
+
+\section{演習}
+\begin{演習}
+ 右頁のコードの入力・出力の値をクラスにせよ．
+\end{演習}
+
 カプセル化
+
+\input{source_code/workspace/Square4/src/square/ValueToBeSquared.java.tex}
+\input{source_code/workspace/Square4/src/square/SquaredValue.java.tex}
+
+なお，右頁のコードは演習？の解答でもある．
 
 \newpage
 \input{source_code/workspace/Square4/src/square/Square.java.tex}
 \newpage
 
-\subsection{Square5: 「枠組み」を抽出する}
-インタフェイス
+\chapter{スライドp.106以降}
+\section{ほげほげ}
+
+
+
+\newpage
+\section{例題}
+\subsection{Division4: フレームワーク化}
+
+\newpage
+\input{source_code/workspace/Division4/src/division/Division.java.tex}
+\newpage
+
+\subsection{Division5: }
+\newpage
+\input{source_code/workspace/Division5/src/division/Division.java.tex}
+\newpage
+
+
+\newpage
+\section{演習}
+\subsection{Square5: 「枠（わく）」を抽出する}
+
+frameworkパッケージには次の2つのインタフェイスを抽出しよう．
+
+\input{source_code/workspace/Square5/src/framework/Input.java.tex}
+\input{source_code/workspace/Square5/src/framework/Output.java.tex}
+
+すでにある入力値・出力値のクラスにそれぞれ，インタフェイスを実装する．
+
+\input{source_code/workspace/Square5/src/square/ValueToBeSquared.java.tex}
+\input{source_code/workspace/Square5/src/square/SquaredValue.java.tex}
 
 \newpage
 \input{source_code/workspace/Square5/src/square/Square.java.tex}
 \newpage
 
-\section{演習問題}
-
-\begin{演習}
- コメントブロックを用いて，このプログラムを入力・処理・出力に整理しなさ
- い．
-\input{source_code/workspace/Division1/src/division/Division.java.tex}
-\input{source_code/workspace/Division2/src/division/Division.java.tex}
-\input{source_code/workspace/Division3/src/division/Division.java.tex}
-\input{source_code/workspace/Division4/src/division/Division.java.tex}
-\input{source_code/workspace/Division5/src/division/Division.java.tex}
-\end{演習}
-
-\section{パッケージとクラスの可視性}
-パッケージは名前空間です．
 
 \chapter{メモ}
 
@@ -585,7 +916,10 @@ IPOをメソッドにしたコードは次のとおりになる．
  \item interfaceとclassの使い分け
  \item 試行錯誤．あるべき設計を発見するまでに必要だったプロセスｖｓ手
        戻り
+ \item パッケージは名前空間です，という説明をどこかでする．
 \end{enumerate}
+
+Eclipseに関するスライドpp.74--89をどうするか．
 
 
 \begin{演習}

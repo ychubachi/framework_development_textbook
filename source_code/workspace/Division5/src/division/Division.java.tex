@@ -1,19 +1,16 @@
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1,frame=single,fontsize=\small]
-\PY{k+kn}{package}\PY{+w}{ }\PY{n}{division}\PY{o}{;}
+\PY{k+kn}{package}\PY{+w}{ }\PY{n}{division}\PY{o}{;}\PY{+w}{ }\PY{c+c1}{//}\PY{+w}{ }\PY{c+c1}{このあとに改行を入れたい}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{java.io.BufferedReader}\PY{o}{;}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{java.io.IOException}\PY{o}{;}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{java.io.InputStreamReader}\PY{o}{;}
-
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{framework.Input}\PY{o}{;}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{framework.Output}\PY{o}{;}
-
 
 \PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{class}\PY{+w}{ }\PY{n+nc}{Division}\PY{+w}{ }\PY{o}{\PYZob{}}
 \PY{+w}{    }\PY{k+kd}{public}\PY{+w}{ }\PY{k+kd}{static}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{main}\PY{o}{(}\PY{n}{String}\PY{o}{[}\PY{o}{]}\PY{+w}{ }\PY{n}{args}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{Exception}\PY{+w}{ }\PY{o}{\PYZob{}}
 \PY{+w}{    }\PY{+w}{    }\PY{n}{Division}\PY{+w}{ }\PY{n}{division}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{k}{new}\PY{+w}{ }\PY{n}{Division}\PY{o}{(}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{+w}{    }\PY{n}{division}\PY{o}{.}\PY{n+na}{run}\PY{o}{(}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{o}{\PYZcb{}}
-\PY{+w}{    }
 \PY{+w}{    }
 \PY{+w}{    }\PY{k+kd}{private}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{run}\PY{o}{(}\PY{o}{)}\PY{+w}{ }\PY{k+kd}{throws}\PY{+w}{ }\PY{n}{Exception}\PY{+w}{ }\PY{o}{\PYZob{}}
 \PY{+w}{    }\PY{+w}{    }\PY{n}{Input}\PY{+w}{ }\PY{n}{input}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{n}{input}\PY{o}{(}\PY{o}{)}\PY{o}{;}
@@ -47,7 +44,8 @@
 \PY{+w}{    }\PY{c+c1}{//}\PY{+w}{ }\PY{c+c1}{割り算の結果を表示する}
 \PY{+w}{    }\PY{k+kd}{private}\PY{+w}{ }\PY{k+kt}{void}\PY{+w}{ }\PY{n+nf}{output}\PY{o}{(}\PY{n}{Output}\PY{+w}{ }\PY{n}{output}\PY{o}{)}\PY{+w}{ }\PY{o}{\PYZob{}}
 \PY{+w}{    }\PY{+w}{    }\PY{n}{QuotientAndRemainder}\PY{+w}{ }\PY{n}{qar}\PY{+w}{ }\PY{o}{=}\PY{+w}{ }\PY{o}{(}\PY{n}{QuotientAndRemainder}\PY{o}{)}\PY{+w}{ }\PY{n}{output}\PY{o}{;}
-\PY{+w}{    }\PY{+w}{    }\PY{n}{System}\PY{o}{.}\PY{n+na}{out}\PY{o}{.}\PY{n+na}{print}\PY{o}{(}\PY{l+s}{"商は"}\PY{+w}{ }\PY{o}{+}\PY{+w}{ }\PY{n}{qar}\PY{o}{.}\PY{n+na}{quotient}\PY{+w}{ }\PY{o}{+}\PY{+w}{ }\PY{l+s}{"で余は"}\PY{+w}{ }\PY{o}{+}\PY{+w}{ }\PY{n}{qar}\PY{o}{.}\PY{n+na}{remainder}\PY{+w}{ }\PY{o}{+}\PY{+w}{ }\PY{l+s}{"です"}\PY{o}{)}\PY{o}{;}
+\PY{+w}{    }\PY{+w}{    }\PY{n}{System}\PY{o}{.}\PY{n+na}{out}\PY{o}{.}\PY{n+na}{print}\PY{o}{(}\PY{l+s}{"商は"}\PY{+w}{ }\PY{o}{+}\PY{+w}{ }\PY{n}{qar}\PY{o}{.}\PY{n+na}{quotient}
+\PY{+w}{    }\PY{+w}{    }\PY{+w}{    }\PY{+w}{    }\PY{o}{+}\PY{+w}{ }\PY{l+s}{"で余は"}\PY{+w}{ }\PY{o}{+}\PY{+w}{ }\PY{n}{qar}\PY{o}{.}\PY{n+na}{remainder}\PY{+w}{ }\PY{o}{+}\PY{+w}{ }\PY{l+s}{"です"}\PY{o}{)}\PY{o}{;}
 \PY{+w}{    }\PY{o}{\PYZcb{}}
 \PY{o}{\PYZcb{}}
 \end{Verbatim}
