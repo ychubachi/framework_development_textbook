@@ -32,3 +32,6 @@
 *.tdo
 /tmp
 document.pdf
+*.xbb
+*.bak
+*.lock

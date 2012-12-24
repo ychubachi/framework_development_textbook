@@ -1,14 +1,11 @@
-\documentclass[a4j,papersize]{jsbook}
+\documentclass[a4j, twoside]{jsbook}
 
 \usepackage[T1]{fontenc} % LaTeXのフォントのエンコーディングをT1にする
 \usepackage{textcomp} % TS1
 \usepackage[utf8]{inputenc} % ファイルのエンコーディングをUTF8にする
 \usepackage{lmodern}
-
-%\usepackage{url}
-
-\usepackage{document} % 自作書式集
-
+\usepackage[top=2cm, inner=2.5cm,
+  width=38zw, height=46\baselineskip, marginparwidth=12zw]{geometry}
 \usepackage[dvipdfmx,%
  bookmarks=true,%
  bookmarksnumbered=true,%
@@ -20,16 +17,22 @@
  pdfkeywords={Java; Object-Oriented Programing; Framework;}]{hyperref}
 \usepackage{pxjahyper}
 
+\usepackage{document} % 自作書式集
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 本文
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\title{オブジェクト指向フレームワーク原論}d
+%\title{オブジェクト指向フレームワーク原論}
 \title{Javaによる抽象化プログラミング技法}
 \author{中鉢 欣秀}
 \begin{document}
 \maketitle
-% \tableofcontents
+
+\setcounter{tocdepth}{4}
+\tableofcontents
+%\listoftables
+\listoffigures
 
 \chapter*{序}
 
@@ -42,7 +45,8 @@
 \section*{はじめに}
 
 この教科書はオブジェクト指向言語の抽象化機構を最短で理解できることを目
-指したものである．
+指したものである．\marginpar{パッケージ
+については・・・を参照．}．
 
 ソフトウェアに関連する技術の移り変わりはとても早い．変わらない知識（普遍的な知識）を身につけることこそ，ソフトウェアのアーキテクトに求められることです．
 
@@ -227,60 +231,6 @@ Java言語の各種のOO機能を活用して、フレームワー
 実際の開発の現場でも、トップダウンとボトムアッ
 プは併用する
 
-\section{IPOパターン}
-
-最も単純なソフトウェアのアーキテクチャ
- IPO = Input + Process + Output
-IPOとは?
- 入力処理/中核となる計算処理/出力処理のこと
- 株式公開(Initial Public Offering)のことではないです...
-ソフトウェアのアーキテクチャの切り口
- IPOをフレームワークとして用いることができる
-
-ソフトウェアはIPOから成り立つ．
-
-\begin{figure}
- \begin{center}
-  %trim option's parameter order: left bottom right top
-  \includegraphics[width=0.8\textwidth, trim=10mm 30mm 10mm 45mm,clip]
-   {IPO.pdf}
-  \caption{IPOの模式図}
- \end{center}
-\end{figure}
-
-大きなIPOはさらに細かいIPO構造を含む．
-最終的にはこれ以上細かくできない処理まで行き着く．
-
-\begin{figure}
- \begin{center}
-  %trim option's parameter order: left bottom right top
-  \includegraphics[width=0.8\textwidth, trim=5mm 34mm 10mm 60mm,clip]
-   {IPO_tree.pdf}
-  \caption{IPOは階層構造になる}
- \end{center}
-\end{figure}
-
-最も細かい粒度のIPO
-
-Input
- メモリや
- デバイス
- からデー
-タを取り
- 込む
-
-Process
- CPUによ
- る演算
- 処理
-
-Output
- メモリや
- デバイス
- への
- データの
- 送り込み
-
 \section{MVCパターン}
 
 % $ pdftk フレームワーク開発特論.pdf cat 29 output MVC.pdf
@@ -363,57 +313,6 @@ http://merd.sourceforge.net/pixel/language-study/diagram.html
  ラリー・ウォール
  Rubyを作った人
  まつもとゆきひろ
-\section{目的手段展開について}
-
-\begin{figure}
- \begin{center}
-  %trim option's parameter order: left bottom right top
-  \includegraphics[width=0.8\textwidth, trim=10mm 18mm 20mm 30mm,clip]
-   {mokuteki_shudan.pdf}
-  \caption{目的手段展開の構造}
- \end{center}
-\end{figure}
-
-目的型と手段型のコメント比較
-
-コメントには「目的(何をする・What)」を書
-く
-
-「手段(どうする・How)」はコードを読めば分か
-る
-
-手段型のコメント
-\begin{verbatim}
-	// totalをcountで割る
-	average = total / count;
-\end{verbatim}
-
-目的型のコメント
-\begin{verbatim}
-	// 平均点を求める
-	average = total / count;
-\end{verbatim}
-
-\subsection{コメント・ブロック}
-コメントによるブロックの作り方．
-コメントと空行の組み合わせ．
-
-\begin{verbatim}
-private void run() throws Exception {
-    // ○○を入力する
-    aaa();
-    bbb();
-
-    // ○○を計算する
-    ccc();
-
-    // ○○を出力する
-    ddd();
-}
-\end{verbatim}
-
-
-
 \section{演習問題}
 \begin{演習}
 身近な次のソフトウェアのIPOはそれぞれなにか?
@@ -476,7 +375,7 @@ IPOフレームワークに基づく「プログラムの価値(=プログラが
  他の言語の場合は?
  ???
 
-Javaのmain()メソッドはなぜstaticか?
+\subsection{Javaのmain()はなぜstaticか?}
 仮にMainクラスがあり、コンパイル済みである
 とき
 
@@ -505,18 +404,50 @@ Javaのmain()でやるべきこと
  インスタンスの開始メソッド呼び出し
  など
 
-注意
+OSの世界とオブジェクト指向の世界の橋渡しをするのがJava言語のmain()の役
+割なのだ．
 
- 教科書に出てくる短いサンプルならいざ知らず,
-main()内に複雑なロジックを記述してはいけない
+\subsection{Square0: 自乗を計算するプログラム}
+\begin{figure}
+ \input{source_code/workspace/Square0/src/square/Square.java.tex}
+ \caption{Square0: Square.java}\label{fig:Square0:Square}
+\end{figure}
+
+最近はあまり見かけないが，一昔前のJava言語の入門書には，プログラムの最
+初の例として図\ref{fig:Square0:Square}のようなコードが載っていたもので
+ある．入力された値の自乗を計算して表示するためのプログラムだ．
+
+このコードはとても問題のあるコードで，一言で言えば，オブジェクト指向言
+語たるJavaらしくないコードなのだ．ある意味，例外的にpublic staticなメソッ
+ドになるmain()メソッドにすべての処理が書いてあるという点が問題だ．クラ
+スを定義し，そのインスタンスを生成してメソッドを呼ぶ，のがJavaのオブジェ
+クト指向というものだろう．
+
+この例を見た，他のプログラミング言語（C言語だのVBだの）を知っている人で
+あれば，「では，メソッドでも追加してプログラムを拡張するか」，と考えた
+時に，main()の中から作成した他のメソッドが呼べないことに驚くだろう．
+staticなメソッドからは，staticなメソッドしか呼べないからだ\marginpar{筆
+者は，すべてのメソッドがstaticになっているソートのプログラムを見たこと
+がある．C言語の教科書をそのままJava言語に翻訳したものだろう．}．
+
+しかし，前述のとおり，Java言語を初心者に教えようとすると，このコードの
+ような例を最初に取り上げるのは致し方がない面がある．だって，すでにたか
+がこの程度のプログラムであっても，packageだのimportだのpublicだのclass
+だのとおまじないが並ぶ．BufferedReaderやInputStreamReaderといったAPIの
+クラス，IOException・・・．誠にJavaは初心者にやさしくない．
+
+これに加えてクラスとインスタンスの理解が必要となる．．．
+
+1行目はsquareというパッケージ宣言です（正式は？）\marginpar{パッケージ
+については・・・を参照．}．
+
+\begin{例題}
+ インスタンス生成を用いて書き直せ．ただし，クラスは増やさない．
+\end{例題}
 
 \section{クラスとインスタンス}
 
-Java言語におけるクラスの取り扱い
- クラスを定義する
- インスタンスを生成する
- インスタンスを使用する
- 具体的にはメソッド呼び出し
+\subsection{クラスの定義とインスタンスの生成}
 
 \begin{figure}
  \begin{center}
@@ -527,7 +458,203 @@ Java言語におけるクラスの取り扱い
  \end{center}
 \end{figure}
 
-section{メソッド}
+Java言語におけるクラスの取り扱い
+ クラスを定義する
+ インスタンスを生成する
+ インスタンスを使用する
+ 具体的にはメソッド呼び出し
+\subsection{Square1: クラスとインスタンス}
+
+\texttt{new}演算子を用い，インスタンスを作成して，メソッドを呼び出す，
+オブジェクト指向らしいプログラムにしたのが図\ref{fig:Square1:Square}の
+ソースコードである\marginpar{最初に呼び出すメソッドの名前がrun()になっ
+ているのは，筆者が最初にプログラミングを学んだBasic言語のrunコマンドが
+ある種の原体験として刷り込まれているからなのかもしれない．}．これでやっ
+と，落ち着いて先に進める．
+
+\section{IPOパターン}
+
+\begin{figure}
+ \input{source_code/workspace/Square1/src/square/Square.java.tex}
+ \caption{Square1: インスタンス生成を用いたSquare.java}\label{fig:Square1:Square}
+\end{figure}
+
+最も単純なソフトウェアのアーキテクチャ
+ IPO = Input + Process + Output
+IPOとは?
+ 入力処理/中核となる計算処理/出力処理のこと
+ 株式公開(Initial Public Offering)のことではないです...
+ソフトウェアのアーキテクチャの切り口
+ IPOをフレームワークとして用いることができる
+
+ソフトウェアはIPOから成り立つ．
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=10mm 30mm 10mm 45mm,clip]
+   {IPO.pdf}
+  \caption{IPOの模式図}
+ \end{center}
+\end{figure}
+
+大きなIPOはさらに細かいIPO構造を含む．
+最終的にはこれ以上細かくできない処理まで行き着く．
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=5mm 34mm 10mm 60mm,clip]
+   {IPO_tree.pdf}
+  \caption{IPOは階層構造になる}
+ \end{center}
+\end{figure}
+
+最も細かい粒度のIPO
+
+Input
+ メモリや
+ デバイス
+ からデー
+タを取り
+ 込む
+
+Process
+ CPUによ
+ る演算
+ 処理
+
+Output
+ メモリや
+ デバイス
+ への
+ データの
+ 送り込み
+
+
+ここで，次の例題を考えてみよう．
+
+\begin{例題}
+ 図\ref{fig:Square1:Square}にあるSquareクラスの\texttt{run()}メソッド内
+ のコードのうち，入力・処理・出力はそれぞれどこか\marginpar{少し意地の
+ 悪い問題文の書き方であるが，丁寧に書いてしまっては問題の意味がなくなる
+ ので，このような書き方をしておく．}．
+\end{例題}
+
+さて，どうやってこの問題をとこうか．
+
+\begin{quotation}
+まず目につくのは，14行，20行のSystem.out.println()の箇所ではないだろう
+か．このstaticなメソッドは標準出力（通常は画面）に文字列を出力して改行
+をする．では，このあたりが「出力」になるのだろうな．
+
+次に「入力」はどこだろうか，と思ってコードを見ると15--17行が標準入力か
+ら1行読み込んでいるコードだから，ここらへんがそうか，ふむふむ，となる．
+
+さて，「処理」はというと，残っているのは18-19行なので消去法でここかな…．
+ここは標準入力から文字列を受け取って，実数型に変換しているコードだから，
+処理と言ってもよかろう．
+
+ってでも，このプログラムのそもそもの目的は「自乗を計算」することなんだ
+よな．そうすると，自乗を計算している箇所は20行目のvalue * valueだ．そ
+うすると，ここも処理なのか．
+\end{quotation}
+
+といった（筆者の思惑通りの）思考を巡らせていただけただろうか．いや，巡
+らせておいてもらわないとこの後の解説が不要になってしまうから，このよう
+に考えた，ということにしておいて強引に説明に進む\marginpar{でも，教室で
+この問題を出すと，こういう答えをする学生がほとんどなのだ．まあ，問題文
+の書き方に出題者の意図（悪意?）がこめられているからなのであろうが．}．
+
+\section{目的手段展開について}
+さて，先ほどあなたは「そもそもの目的は…」と考えたことだろう
+\marginpar{くどいようだが，考えたことにして先に進む．}．これがこの例題
+を読者に提示している理由と直結している．
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=10mm 18mm 20mm 30mm,clip]
+   {mokuteki_shudan.pdf}
+  \caption{目的手段展開の構造}
+ \end{center}
+\end{figure}
+
+目的型と手段型のコメント比較
+
+コメントには「目的(何をする・What)」を書
+く
+
+「手段(どうする・How)」はコードを読めば分か
+る
+
+手段型のコメント
+\begin{verbatim}
+	// totalをcountで割る
+	average = total / count;
+\end{verbatim}
+
+目的型のコメント
+\begin{verbatim}
+	// 平均点を求める
+	average = total / count;
+\end{verbatim}
+
+\subsection{コメント・ブロック}
+
+コメントによるブロックの作り方．
+コメントと空行の組み合わせ．
+
+\begin{verbatim}
+private void run() throws Exception {
+    // ○○を入力する
+    aaa();
+    bbb();
+
+    // ○○を計算する
+    ccc();
+
+    // ○○を出力する
+    ddd();
+}
+\end{verbatim}
+
+では，実際に，コメント・ブロックを用いてソースコードを分けてみてほしい．
+
+\begin{例題}
+ブロックによる構造の整理 
+
+プログラムを編集し,コメントブロックにより
+IPOごとに整理しなさい
+\end{例題}
+
+ ヒント プロセスとアウトプットを分離するためには,少々工夫が
+必要
+
+
+
+
+\subsection{Square2: コメント・ブロック}
+
+\begin{figure}
+ \input{source_code/workspace/Square2/src/square/Square.java.tex}
+ \caption{Square2: コメント・ブロックで整理したSquareクラス}\label{fig:Square2:Square}
+\end{figure}
+
+答えは図\ref{fig:Square2:Square}の通りだ．
+
+最初のコードから変わった点
+プログラムの全体構造
+
+ Input-Process-Outputという構造が人間にとって分
+かりやすい
+
+ 保守性の向上(人に優しいプログラミング)
+
+23行がポイントだ．
+人間にとってわかりやすくなった代償として，変数が1つ増えている．
+
+\section{メソッドによる構造化}
 コメントブロックの効果と問題
 • プログラムのどの部分がIPOを担っているのかが明確
 になった
@@ -550,15 +677,6 @@ private void run() throws Exception {
 }
 \end{verbatim}
 
-\begin{figure}
- \begin{center}
-  %trim option's parameter order: left bottom right top
-  \includegraphics[width=0.8\textwidth, trim=33mm 18mm 15mm 35mm,clip]
-   {run.pdf}
-  \caption{メソッドの階層構造}
- \end{center}
-\end{figure}
-
 メソッドを利用する目的
 
 同じ処理を複数回利用する
@@ -574,7 +692,39 @@ private void run() throws Exception {
 • これはすなわち,1度しか呼ばないメソッドであっても,
 その作成価値はあるということでもある.
 
-\section{メソッドのシグネチャ}
+\begin{例題}
+ 「自乗を計算する」プログラムのメソッド化
+
+ 自乗を計算するプログラムのIPOをメソッドにして
+みよう
+\end{例題}
+
+IPOの各メソッドのシグネチャは次のとおりとする．
+
+\begin{verbatim}
+入力: private double input() throws IOException
+処理: private double process(double input)
+出力: private void output(double output)
+\end{verbatim}
+
+\subsection{Square3: IPOをメソッドにする}
+IPOをメソッドにしたコードは図\ref{fig:Square3:Square}のとおりになる．
+
+\begin{figure}
+ \input{source_code/workspace/Square3/src/square/Square.java.tex}
+ \caption{Square3: メソッドで構造化したSquareクラス}\label{fig:Square3:Square}
+\end{figure}
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=33mm 18mm 15mm 35mm,clip]
+   {run.pdf}
+  \caption{メソッドの階層構造}
+ \end{center}
+\end{figure}
+
+\subsection{メソッドのシグネチャ}
 
 メソッドのシグネチャと戻り値の型
 メソッドのシグネチャ(signature)とは?
@@ -627,125 +777,40 @@ Java言語の宣言と実装
 \end{figure}
 
 \newpage
-
-\chapter{例題と演習}
-\section{例題}
-%スライドpp.90--97
-
-この演習では・・・を目指す．
-
-\newpage
-\subsection{Square0: 自乗を計算するプログラム}
-最近はあまり見かけないが，一昔前のJava言語の入門書には最初のプログラム
-の例として右頁のようなコードが載っていたものである．
-
-このコードはとても問題のあるコードである．一言で言えば，オブジェクト指
-向言語たるJavaらしくないコードなのだ．
-
-しかし，前述のとおり，Java言語を
-初心者に教えようとすると，このコードのような例を最初に取り上げるのは致
-し方がない面がある．
-
-1行目から8行目辺りまでを「おまじない」として，9行目から15行目までの解
-説をする所からはじめるであろう．
-
-1行目はsquareというパッケージ宣言です（正式は？）\marginpar{パッケージ
-については・・・を参照．}．
-
-\begin{例題}
- インスタンス生成を用いて書き直せ．
-\end{例題}
-
-\newpage
-\input{source_code/workspace/Square0/src/square/Square.java.tex}
-\newpage
-
-\subsection{Square1: クラスとインスタンス}
-
-\texttt{new}演算子を用い，インスタンスを作成して，メソッドを呼び出す，
-オブジェクト指向らしいプログラムにしたのが左頁のソースコードである．
-
-それでは，次の例題を考えてみよう．
-
-\begin{例題}
- Squareクラスの\texttt{run()}メソッド内のコードのうち，入力・処理・
- 出力はそれぞれどれか．
-\end{例題}
-
-・・・は出力なのだろうんか？
-？で述べたとおり，目的手段の考え方をしよう．
-・・・の目的はなにか．
-
-では，実際に，コメント・ブロックを用いてソースコードを分けてみてほしい．
-
-\begin{例題}
-ブロックによる構造の整理 
-
-プログラムを編集し,コメントブロックにより
-IPOごとに整理しなさい
-
-
-\end{例題}
- ヒント プロセスとアウトプットを分離するためには,少々工夫が
-必要
-
-\newpage
-\input{source_code/workspace/Square1/src/square/Square.java.tex}
-\newpage
-
-
-\subsection{Square2: コメント・ブロック}
-
-答えは次の通りだ．
-
-最初のコードから変わった点
-プログラムの全体構造
-
- Input-Process-Outputという構造が人間にとって分
-かりやすい
-
- 保守性の向上(人に優しいプログラミング)
-
-23行がポイントだ．
-人間にとってわかりやすくなった代償として，変数が1つ増えている．
-
-\begin{例題}
- 「自乗を計算する」プログラムのメソッド化
-
- 自乗を計算するプログラムのIPOをメソッドにして
-みよう
-\end{例題}
-
-IPOの各メソッドのシグネチャは次のとおりとする．
-
-\begin{verbatim}
-入力: private double input() throws IOException
-処理: private double process(double input)
-出力: private void output(double output)
-\end{verbatim}
-
-\newpage
-\input{source_code/workspace/Square2/src/square/Square.java.tex}
-\newpage
-
-\subsection{Square3: IPOをメソッドにする}
-IPOをメソッドにしたコードは次のとおりになる．
-
-\newpage
-\input{source_code/workspace/Square3/src/square/Square.java.tex}
-\newpage
-
 \section{演習問題}
-\begin{演習}
- 右頁のプログラムをコメント・ブロックにより入力・処理・出力の構造を明
- 確にせよ．
-\end{演習}
-\newpage
-\input{source_code/workspace/Division1/src/division/Division.java.tex}
-\newpage
-\chapter{ほげほげ}
 
-\section{複数の値を束ねるクラス}
+\begin{演習}
+ 図\ref{fig:Division1:Division}のプログラムをコメント・ブロックにより入
+ 力・処理・出力の構造を明確にせよ．
+\end{演習}
+
+\begin{figure}
+ \input{source_code/workspace/Division1/src/division/Division.java.tex}
+ \caption{Division1: 割り算を計算するプログラム}\label{fig:Division1:Division}
+\end{figure}
+
+
+\chapter{入出力クラス}
+
+\begin{abstract}
+ 入力と出力をクラスに．．．
+\end{abstract}
+
+\section{Division2: 割り算の入出力値にクラスを導入}
+
+\begin{figure}
+ \input{source_code/workspace/Division2/src/division/Division.java.tex}
+ \caption{Division2: コメント・ブロックで整理したDivisionクラス}\label{fig:Division2:Division}
+\end{figure}
+
+メソッドによる構造化は便利な手段であるが，図
+\ref{fig:Division2:Division}のコードをメソッドで整理しようとするとちょっ
+とした工夫が必要だ\marginpar{これは前の演習の答え．}．
+
+\begin{例題}
+ 図\ref{fig:Division2:Division} のコードをメソッドで整理せよ．
+\end{例題}
+
 演習？で取り上げた「割り算を計算する」プログラムは，
 
 • このプログラムは,割られる数と割る数を入力に取り,
@@ -753,14 +818,16 @@ IPOをメソッドにしたコードは次のとおりになる．
 
 • 即ち,入力値が2つ,出力値も2つである
 
+\section{Javaのメソッドの文法上の制約}
+
 Java言語のメソッドの制限
 
-• Java言語のメソッドは,複数の値を入力として受け取る
-ことはできるが,複数の値を出力することができない
+ Java言語のメソッドは,複数の値を入力として受け取ることはできるが,複数の
+値を出力することができない\marginpar{他のプログラミング言語(LispやPerl
+など)は,複数の出力値を返すメソッド(関数)を作成できるものもある．リストやハッシュ表として．}
+
 
 • この問題を解決するには,どうしたらよいだろうか?
-
-\section{Javaのメソッドの文法上の制約}
 
 Java言語のメソッドは,次の構造である
 
@@ -773,12 +840,13 @@ Java言語のメソッドは,次の構造である
 メソッドにすることはできない
 
  Eclipseのリファクタリング機能も使えない
+
+\section{複数の値を束ねるクラス}
+
 この問題を「クラス」を導入することで解決しよう
 
  注意)
 
- 他のプログラミング言語(LispやPerlなど)は,複数の出力値
-を返すメソッド(関数)を作成できるものもある
 
 複数の値を束ねる手段としてのクラス
 ここでは,Javaのクラスが持つ多くの性質のう
@@ -806,32 +874,31 @@ Java言語のメソッドは,次の構造である
 	処理(input, output)
 \end{verbatim}
 
-\newpage
-\chapter{例題と演習}
-\section{ほげほげ}
-この例題は・・・・演習は・・・．
-\newpage
-\section{例題}
-\subsection{Division2: 割り算の入出力値にクラスを導入}
-
-右頁のコードは・・・
-
-
-「割る数と割られる数」は次のクラスで表そう．
-\input{source_code/workspace/Division3/src/division/DividendAndDivisor.java.tex}
-
-「商と余」は次のクラスを用いる．
-\input{source_code/workspace/Division3/src/division/QuotientAndRemainder.java.tex}
 
 なお，メソッドはまだ導入しなくて良い．
 
-\newpage
-\input{source_code/workspace/Division2/src/division/Division.java.tex}
-\newpage
-\subsection{Division3: メソッド化}
-2つのクラスを導入したコードは右頁のとおりだ．
+「割る数と割られる数」は図\ref{fig:Division3:DividendAndDivisor}のクラスで表そう．
+\begin{figure}
+ \input{source_code/workspace/Division3/src/division/DividendAndDivisor.java.tex}
+ \caption{Division3: 割る数と割られる数クラス}\label{fig:Division3:DividendAndDivisor}
+\end{figure}
+
+
+「商と余」は図\ref{fig:Division3:QuotientAndRemainder}のクラスを用いる．
+\begin{figure}
+ \input{source_code/workspace/Division3/src/division/QuotientAndRemainder.java.tex}
+ \caption{Division3: 商と余クラス}\label{fig:Division3:QuotientAndRemainder}
+\end{figure}
+
+2つのクラスを導入したコードは図\ref{fig:Division3:Division}のとおりだ．
 14行と25行がインスタンスを生成している部分である．
 
+\begin{figure}
+ \input{source_code/workspace/Division3/src/division/Division.java.tex}
+ \caption{Division3: 入出力をクラスに変更したDivision}\label{fig:Division3:Division}
+\end{figure}
+
+\section{Division3: メソッド化}
 \begin{例題}
  メソッドを導入せよ．
 \end{例題}
@@ -846,46 +913,361 @@ Java言語のメソッドは,次の構造である
 	}
 \end{verbatim}
 
-\newpage
-\input{source_code/workspace/Division3/src/division/Division.java.tex}
+入出力値クラスはそのまま使う．
+
+図\ref{fig:Division4:Division}になる．
+
+\begin{figure}
+ \input{source_code/workspace/Division4/src/division/Division.java.tex}
+ \caption{Division4: メソッドによる構造化をしたDivision}\label{fig:Division4:Division}
+\end{figure}
+
 \newpage
 
 \section{演習}
 \begin{演習}
- 右頁のコードの入力・出力の値をクラスにせよ．
+ 図\ref{fig:Square4:Square}頁のコードの入力・出力の値をクラスにせよ．
 \end{演習}
 
-カプセル化
+カプセル化．図\ref{fig:Square4:ValueToBeSquared}，図\ref{fig:Square4:SquaredValue}参照．
 
-\input{source_code/workspace/Square4/src/square/ValueToBeSquared.java.tex}
-\input{source_code/workspace/Square4/src/square/SquaredValue.java.tex}
+\begin{figure}
+ \input{source_code/workspace/Square4/src/square/ValueToBeSquared.java.tex}
+ \caption{Square4: 自乗を計算するプログラムの入力値クラス}\label{fig:Square4:ValueToBeSquared}
+\end{figure}
 
-なお，右頁のコードは演習？の解答でもある．
+\begin{figure}
+ \input{source_code/workspace/Square4/src/square/SquaredValue.java.tex}
+ \caption{Square4: 自乗を計算するプログラムの出力値クラス}\label{fig:Square4:SquaredValue}
+\end{figure}
 
-\newpage
-\input{source_code/workspace/Square4/src/square/Square.java.tex}
-\newpage
+なお，図\ref{fig:Square4:Square}のコードは演習？の解答でもある．
+
+\begin{figure}
+ \input{source_code/workspace/Square4/src/square/Square.java.tex}
+ \caption{Square4: 入出力をクラスにしたSquare}\label{fig:Square4:Square}
+\end{figure}
+
+
+\section{演習}
+\begin{演習}
+ 図\ref{fig:Square4:Square}頁のコードの入力・出力の値をクラスにせよ．
+\end{演習}
+
+
 
 \chapter{スライドp.106以降}
 \section{ほげほげ}
 
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=15mm 0mm 15mm 0mm,clip]
+   {Division.pdf}
+  \caption{クラス同士の関係}
+ \end{center}
+\end{figure}
 
+クラスの性質のここまでのまとめ
+
+クラスの性質
+
+ 複数の情報(値)を束ねる
+ ばらばらになっていた複数の入力値/出力値を束ねて,1つ
+のまとまりとして取り扱う
+
+ 複数の処理を束ねる
+ 複数の関連する処理を束ねて,1つのまとまりとして取り
+扱う
+
+複数のクラス
+
+ オブジェクト指向では,ネットワーク構造を備える
+複数のクラスの関係により,アーキテクチャを構成
+する
+
+\section{2つのプログラムの共通構造を考える}
+2つの目的の異なるプログラムをとりあげた
+
+ 「自乗を計算する」プログラム
+
+ 「割り算を計算する」プログラム
+
+この両者のrun()を見比べて,何か気がつかない
+だろうか?
+
+ 2つの異なるプログラムに共通する構造があるとき,
+そこに「有用な抽象化」の可能性がある
+
+自乗を計算するプログラム
+
+\begin{verbatim}
+	public void run() throws Exception {
+	    double input = input();
+	    double output = process(input);
+	    output(output);
+	}
+\end{verbatim}
+
+割り算をするプログラム
+
+\begin{verbatim}
+	public void run() throws Exception {
+	    DividendAndDivisor input = input ();
+	    QuotientAndRemainder output = process(input);
+	    output (output);
+	}
+\end{verbatim}
+
+両者は大同小異といえる．
+
+同じ構造を再利用する
+
+オブジェクト指向の特徴として「再利用性」が
+ある
+
+ 目的の異なる2つのプログラムに共通する部分があ
+れば,その部分を抽象化することで再利用可能
+
+クラスとは,プログラムを再利用するための強
+力な道具立てである
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=15mm 0mm 15mm 0mm,clip]
+   {Square.pdf}
+  \caption{自乗を計算するプログラム}
+ \end{center}
+\end{figure}
+
+\section{2つのプログラムの構造比較}
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=15mm 0mm 15mm 0mm,clip]
+   {Compare.pdf}
+  \caption{構造比較}
+ \end{center}
+\end{figure}
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=15mm 0mm 15mm 0mm,clip]
+   {CompareMethod.pdf}
+  \caption{メインクラスのメソッドの比較}
+ \end{center}
+\end{figure}
+
+\section{構造を共通にするには}
+「自乗を計算する」プログラムと「割り算をする」プロ
+グラムの入出力値をクラスにすることで,両者の構造が
+「ほぼ」同一であることが明確になった.
+「ほぼ」同一の構造は,オブジェクト指向の抽象化によ
+り,「まったく同一」のプログラムにすることができる
+
+やりたいこと
+
+2つのプログラムの「run()」関数の中身を完全
+に同じ記述にする
+
+その上で,「run()」関数の中身を両方のプログ
+ラムから再利用する
+
+ 最終的には,2つのプログラムの全てのクラスを同
+じプロジェクトに入れて,双方のプログラムが同じ
+メソッドを利用するようにする
+
+ただし、最初はrun()の中身を同じにすることを
+目指す
+
+ 同じコードが2箇所にある、という意味ではまだ再
+利用とはいえないが、途中の過程として
+
+「同じにする」ための議論
+前のスライドを参考に,両方のrun()の中身を同
+じにするにはどうしたらよいか,順を追って検
+討してみよう
+
+ 入力値クラスと出力値クラス
+ 入力値変数と出力値変数
+ 入力メソッド,処理メソッド,出力メソッド
+
+\section{インタフェイスを使ったアプローチ}
+
+大同小異である二つのメソッドを,完全に同じものにす
+るために,インタフェイスを使う方法がある.その方法
+についてみていこう.
+
+入出力値クラスについて
+安直な解決方法
+ 両方のクラスを同じ名前にする
+それがだめな理由
+ プログラムにおいて,異なる概念を扱うクラスを同
+じ名前にすることは好ましくない
+ 異なる概念を同じ名前にして扱うのは混乱のもと
+ 同じディレクトリ内に同一のファイル名を持つファイルが
+作れないことと同様
+– 「パッケージ」を分ける方法もあるが,ここでは考えない
+よって,別な方法を考える
+
+インタフェイスとは?
+インタフェイスとは?
+
+ メソッドのシグネチャのみを定義するクラスの一種
+抽象クラスとの違い
+ 抽象クラスは,一部のメソッドの実装がない(=シグネ
+チャのみの)クラス
+インタフェイスVS抽象クラス
+ シグネチャのみを記述するインタフェイスは,抽象クラス
+よりも「軽量」である
+ この性質は,分散オブジェクトの実現などに使われます
+ あるクラスを継承させることを強要するより,インタフェ
+イスを実装させることのほうが,影響度が少ない
+「空っぽのインタフェイス」の存在意義
+ シグネチャすらないインタフェイスは,あるものが他のも
+のと同じ性質を備えることを示す「印」として利用可能
+
+入力値クラスの共通化
+インタフェイスを使った解決方法
+ 同じインタフェイスで「しるし」をつける
+
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=15mm 0mm 15mm 0mm,clip]
+   {Interface.pdf}
+  \caption{インタフェイスの導入}
+ \end{center}
+\end{figure}
+
+入出力用Interface
+
+入力と出力のInterfaceのコード
+
+Interfaceを実装させたコード
+
+共通するrun()とメソッドのシグネチャ
+pp.126
+
+\section{差異を比較し上位概念を抽出}
+
+2つのプログラムをまとめて,1つのプロジェクトとなった
+いよいよ,同一の構造を再利用する形に変更していこう
+そのためには,2つのプログラムの中心的なクラス(それらをメ
+インクラスと呼ぼう)の上位概念を考える必要がある
+
+異なる2つの上位にある概念」は何か?
+2つのメイン・クラスの上位概念を表現するに
+はどうしたらよいか?
+この議論も,両者の現在の姿を比較することよ
+り,共通部分と非共通部分を抽出することから
+はじめよう
+
+run()メソッド
+
+ まったく同一である
+
+IPOメソッド
+
+ 共通点
+
+ メソッドのシグネチャ
+
+ 非共通点
+ メソッドの中身
+
+main() の共通点
+
+共通化できそうな気配があるが・・・
+後で議論!
+
+\section{上位概念としてのFrameworkクラス}
+
+自乗を計算するプログラムと,割り算を計算するプログ
+ラムとで共通する部分を含む上位概念である,
+Frameworkクラスを導入する
+
+SquareとDivisionの上位概念
+両者の共通部分を備える上位概念をクラスにする．
+
+Frameworkには何を入れるべきか?
+run()メソッド
+ 完全に共通するrun()をFrameworkに移すことには
+異論がないだろう
+IPOメソッドのシグネチャ
+ run()が呼び出すIPOメソッドについては,中身は非
+共通であるが,シグネチャは共通である
+main()メソッド
+ フレームワークの実態がSquareのインスタンスなの
+かDivisionのインスタンスなのかを設定する部分であ
+り,共通化できない
+ 実は,共通化は可能なのであるが,工夫が必要であるため
+後回し
+
+Frameworkはどんなクラスか?
+(インスタンス化できる通常の)
+クラスなのか?
+・・・×
+
+ FrawemorkはSquareかDivisionと必ず組み合わせて使う
+必要があり,単体では成立しない
+インタフェイスなのか?
+・・・×
+
+ メソッドのシグネチャだけであれば,それでもよいが,
+run()の中身も持たせるため,インタフェイスではない
+抽象クラスなのか?
+・・・○
+
+ run()メソッド(中身を含む)とIPOメソッド(シグネ
+チャのみ)を備える抽象クラスとするのがよい
+
+\begin{figure}
+ \begin{center}
+  %trim option's parameter order: left bottom right top
+  \includegraphics[width=0.8\textwidth, trim=15mm 0mm 15mm 0mm,clip]
+   {FrameworkClass.pdf}
+  \caption{Frameworkと新メインクラス}
+ \end{center}
+\end{figure}
+
+修飾子(可視性)の変更
+現在,main()以外のrun(),IPOメソッドの修飾
+子はprivateである
+ privateのメソッド(およびフィールド)は,他のク
+ラスから完全に隠蔽される
+ このままでは,下位クラスから呼び出したり,オー
+バーライドしたりすることができない
+修飾子をprotectedにすると解決
+ protectedのメソッド(およびフィールド)は,それ
+を継承する下位のクラスに対しては公開される
+
+\section{pp.138--}
 
 \newpage
+
 \section{例題}
 \subsection{Division4: フレームワーク化}
 
-\newpage
-\input{source_code/workspace/Division4/src/division/Division.java.tex}
-\newpage
 
 \subsection{Division5: }
-\newpage
-\input{source_code/workspace/Division5/src/division/Division.java.tex}
-\newpage
 
+\begin{figure}
+ \includegraphics[width=\textwidth]{figures/Division5.pdf}
+ \caption{Class diagram of Division5}
+\end{figure}
 
-\newpage
+frameworkパッケージがdivisionを支えている．まだまだへなちょこなフレームワークである．
+
+\begin{figure}
+ \input{source_code/workspace/Division5/src/division/Division.java.tex}
+ \caption{Division5: }
+\end{figure}
+
 \section{演習}
 \subsection{Square5: 「枠（わく）」を抽出する}
 
@@ -921,6 +1303,10 @@ frameworkパッケージには次の2つのインタフェイスを抽出しよ�
 
 Eclipseに関するスライドpp.74--89をどうするか．
 
+オブジェクト指向は概念に基づく・・・．
+
+オブジェクト指向における抽象化とは，情報と処理のカプセルを抽出して一位
+に識別できる名前をつけること．
 
 \begin{演習}
  Java言語ではクラスの名前とファイル名を一致させる必要がある．他のオブジェ
